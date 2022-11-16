@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">BookkeepingBook</string>
+    <!--    注册的-->
+    <string name="register">注册</string>
+    <string name="name">请输入用户名</string>
+    <string name="pwd">请输入密码</string>
+    <string name="pwd_again">请再输入密码</string>
+    <string name="btn_register">注册</string>
+    <!--    登录的-->
+    <string name="login">登录</string>index
+    <string name="tv_register">去注册</string>
+    <string name="find_pwd">忘记密码</string>
+    <!--    主页导航栏-->
+    <string name="index">账单</string>
+    <string name="index2">资产</string>
+    <string name="index3">我的</string>
+    <!--    我的导航栏-->
+    <string name="tv_user_name">点击登录</string>
+    <!--    设置的-->
+    <string name="up_pwd">修改密码</string>
+    <string name="loginout">退出登录</string>
+    <!--    修改密码的-->
+    <string name="et_old_pwd">请输入原始密码</string>
+    <string name="et_new_pwd">请输入新密码</string>
+    <string name="et_new_pwd_again">请再次输入新密码</string>
+    <string name="btn_save">保存</string>
+    <!--资产的-->
+    <string name="et_assname">请输入账户名称</string>
+    <string name="et_ass_money">请输入账户余额</string>
+    <string name="et_ass_remarks">备注</string>
+</resources>
