@@ -46,7 +46,7 @@ public class AccountAdapter extends BaseAdapter {
         if (convertView == null) {
             // 将布局转换成view对象的方法
             convertView = LayoutInflater.from(context).inflate(R.layout.item_infolist_lv, null);
-            holder = new AccountAdapter.ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (AccountAdapter.ViewHolder) convertView.getTag();
@@ -78,7 +78,7 @@ public class AccountAdapter extends BaseAdapter {
 
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         ImageView iv;
         TextView tvTitle, tvTitle2, tvTitle3, time;
 

@@ -2,19 +2,35 @@ package com.example.BookkeepingBook.entity;
 
 import java.io.Serializable;
 
+
 public class Account implements Serializable {
+    /**
+     * 账目id
+     */
     private int id;
-    // 记账金额
+    /**
+     * 记账金额
+     */
     private double accountMoney;
-    // 账目分类 衣食住行其他
+    /**
+     * 账目分类 衣食住行其他
+     */
     private String accountType;
-    // 账目类型 支出、收入
+    /**
+     * 账目类型 支出、收入
+     */
     private String payType;
-    // 所属账户 微信、支付宝
+    /**
+     * 所属账户 微信、支付宝
+     */
     private String assetsName;
-    // 创建时间
+    /**
+     * 创建时间
+     */
     private String time;
-    // 备注
+    /**
+     * 备注
+     */
     private String Remarks;
 
     @Override
@@ -30,15 +46,18 @@ public class Account implements Serializable {
                 '}';
     }
 
+    public Account() {
+    }
+
     public Account(int id, double accountMoney, String accountType, String payType, String assetsName, String time,
-            String remarks) {
+                   String remarks) {
         this.id = id;
         this.accountMoney = accountMoney;
         this.accountType = accountType;
         this.payType = payType;
         this.assetsName = assetsName;
         this.time = time;
-        Remarks = remarks;
+        this.Remarks = remarks;
     }
 
     public int getId() {

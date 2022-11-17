@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class MySqliteHelper extends SQLiteOpenHelper {
+
     public MySqliteHelper(Context context) {
         // 版本号大于一执行，下次执行修改版本号
         super(context, "assetsDB.db", null, 1);

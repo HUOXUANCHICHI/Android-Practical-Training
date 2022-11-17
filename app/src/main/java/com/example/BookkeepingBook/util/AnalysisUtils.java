@@ -12,7 +12,7 @@ import com.example.BookkeepingBook.login.LoginActivity;
 import java.util.List;
 
 /**
- * @author sailorj 分析工具
+ * @author ablaze 分析工具
  */
 public class AnalysisUtils {
 

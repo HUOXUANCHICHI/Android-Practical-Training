@@ -75,7 +75,9 @@ public class MainActivity extends Activity implements OnClickListener {
         initBodyLayout();
     }
 
-    // 获取底部导航栏上的控件
+    /**
+     * 获取底部导航栏上的控件
+     */
     private void initBottomBar() {
         mBottomLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
         mAccountBtn = findViewById(R.id.bottom_bar_account_btn);

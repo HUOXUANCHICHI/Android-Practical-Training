@@ -74,7 +74,7 @@ public class SettingActivity extends Activity {
         });
     }
 
-    // 清除SharePrederences中的登录状态和登录时的登录名
+    // 清除SharePreferences中的登录状态和登录时的登录名
     private void clearLoginStatus() {
         // TODO Auto-generated method stub
         SharedPreferences sp = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
