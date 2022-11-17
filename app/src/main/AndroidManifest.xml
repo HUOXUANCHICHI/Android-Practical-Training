@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.BookkeepingBook">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.ablaze.BookkeepingBook">
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -8,26 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
-        <activity android:name=".account.AccountAdd" />
-        <activity android:name=".account.AccountList" />
-        <activity android:name=".account.AccountDescActivity" />
-        <activity android:name=".assets.AssetsList" />
-        <activity android:name=".assets.AssetsDescActivity" />
-        <activity android:name=".assets.AssetsAddActivity" />
-        <activity android:name=".aboutme.SettingActivity" />
-        <activity android:name=".aboutme.ModifyPwdActivity" />
-        <activity android:name=".aboutme.MyInfoView" tools:ignore="Instantiatable"/>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".login.RegisterActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.account.AccountAdd" />
+        <activity android:name="com.ablaze.BookkeepingBook.account.AccountList" />
+        <activity android:name="com.ablaze.BookkeepingBook.account.AccountDescActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.assets.AssetsList" />
+        <activity android:name="com.ablaze.BookkeepingBook.assets.AssetsDescActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.assets.AssetsAddActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.aboutme.SettingActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.aboutme.ModifyPwdActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.aboutme.MyInfoView" tools:ignore="Instantiatable"/>
+        <activity android:name="com.ablaze.BookkeepingBook.login.LoginActivity" />
+        <activity android:name="com.ablaze.BookkeepingBook.login.RegisterActivity" />
         <activity 
-        android:name=".login.SplashActivity"
+        android:name="com.ablaze.BookkeepingBook.login.SplashActivity"
         android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.ablaze.BookkeepingBook.MainActivity">
 
         </activity>
     </application>

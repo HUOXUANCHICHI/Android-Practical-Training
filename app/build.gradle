@@ -6,7 +6,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.bookkeepingbook"
+        applicationId "com.ablaze.bookkeepingbook"
         minSdk 28
         targetSdk 33
         versionCode 1
