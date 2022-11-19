@@ -18,7 +18,7 @@ public class SettingActivity extends Activity {
 
     private TextView tv_main_title, tv_back;
     private RelativeLayout rl_title_bar, rl_modify_psw, rl_exit_login;
-    public static SettingActivity instance = null;
+//    public static SettingActivity instance = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +26,21 @@ public class SettingActivity extends Activity {
         setContentView(R.layout.activity_setting);
         // 设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-        instance = this;
+//        instance = this;
+//        System.out.println("====================="+instance+"=============");
         init();
     }
 
     // 获取界面控件
     private void init() {
-        // TODO Auto-generated method stub
-        tv_main_title = (TextView) findViewById(R.id.tv_main_title);
-        tv_main_title.setText("设置");
-        tv_back = (TextView) findViewById(R.id.tv_back);
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_title_bar.setBackgroundColor(Color.parseColor("#78A4FA"));
+        tv_back = (TextView) findViewById(R.id.tv_back);
+        tv_main_title = (TextView) findViewById(R.id.tv_main_title);
+        tv_main_title.setText("设置");
         rl_modify_psw = (RelativeLayout) findViewById(R.id.rl_modify_pwd);
         rl_exit_login = (RelativeLayout) findViewById(R.id.rl_exit_login);
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +52,7 @@ public class SettingActivity extends Activity {
         rl_modify_psw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //todo 修改密码intent second
                 // 跳转到修改密码的界面
                 Intent intent = new Intent(SettingActivity.this, ModifyPwdActivity.class);
                 startActivity(intent);
@@ -74,9 +76,10 @@ public class SettingActivity extends Activity {
         });
     }
 
-    // 清除SharePreferences中的登录状态和登录时的登录名
+    /**
+     * 清除SharePreferences中的登录状态和登录时的登录名
+     */
     private void clearLoginStatus() {
-        // TODO Auto-generated method stub
         SharedPreferences sp = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit(); // 获取编辑器
         editor.putBoolean("isLogin", false); // 清除登录状态

@@ -12,12 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AssetsDao {
-    private MySqliteHelper helper;
+
+    private final MySqliteHelper helper;
 
     public AssetsDao(Context context) {
         helper = new MySqliteHelper(context);
     }
 
+    /**
+     * 增加资产
+     * @param assetsName 资产名称
+     * @param assetsType 资产类型 现金、银行卡、支付宝、微信、其他
+     * @param assetsMoney 资产数目
+     * @param Remarks 备注
+     * @param username 已登录用户名
+     */
     public void addAssets(String assetsName, String assetsType, Double assetsMoney, String Remarks, String username) {
         String sql = "insert into tb_assets (assetsName, assetsType, assetsMoney, Remarks, username) values (?,?,?,?,?)";
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -25,15 +34,10 @@ public class AssetsDao {
         db.close();
     }
 
-    // public void addAssets(Assets assets){
-    // String sql = "insert into
-    // tb_assets(assetsName,assetsType,assetsMoney,Remarks) values (?,?,?,?)";
-    // SQLiteDatabase db = helper.getWritableDatabase();
-    // db.execSQL(sql,new
-    // Object[]{assets.getAssetsName(),assets.getAssetsType(),assets.getAssetsMoney(),assets.getRemarks()});
-    // db.close();
-    // }
-
+    /**
+     * 删除资产
+     * @param id 资产id
+     */
     public void deleteAssets(int id) {
         String sql = "delete from tb_assets where id = ? ";
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -41,6 +45,14 @@ public class AssetsDao {
         db.close();
     }
 
+    /**
+     * 修改资产
+     * @param id 资产id
+     * @param assetsName 资产名称
+     * @param assetsType 资产类型 现金、银行卡、支付宝、微信、其他
+     * @param assetsMoney 资产数目
+     * @param Remarks 备注
+     */
     public void updateAssets(int id, String assetsName, String assetsType, Double assetsMoney, String Remarks) {
         String sql = "update tb_assets set  assetsName = ?, assetsType = ?, assetsMoney = ?, Remarks = ? where id =? ";
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -49,9 +61,13 @@ public class AssetsDao {
         db.close();
     }
 
-    // 查询所有的联系人信息
+    /**
+     * 查询已登录用户的所有资产信息
+     * @param username 已登录用户
+     * @return 资产列表
+     */
     public List<Assets> findAssAll(String username) {
-        ArrayList<Assets> assetsList = new ArrayList<Assets>();
+        ArrayList<Assets> assetsList = new ArrayList<>();
         String sql = "select * from tb_assets where username = '" + username + "'";
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
@@ -59,7 +75,7 @@ public class AssetsDao {
             int id = cursor.getInt(0);
             String assetsName = cursor.getString(1);
             String assetsType = cursor.getString(2);
-            Double assetsMoney = cursor.getDouble(3);
+            double assetsMoney = cursor.getDouble(3);
             String Remarks = cursor.getString(4);
             Assets assets = new Assets(id, assetsName, assetsType, assetsMoney, Remarks);
             assetsList.add(assets);
@@ -68,7 +84,7 @@ public class AssetsDao {
         return assetsList;
     }
 
-    public Assets findByid(int id) {
+    /*public Assets findById(int id) {
         String sql = "select * from tb_assets where id = ?";
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, new String[] { String.valueOf(id) });
@@ -77,16 +93,20 @@ public class AssetsDao {
         if (cursor.moveToNext()) {
             String assetsName = cursor.getString(1);
             String assetsType = cursor.getString(2);
-            Double assetsMoney = cursor.getDouble(3);
+            double assetsMoney = cursor.getDouble(3);
             String Remarks = cursor.getString(4);
             Assets assets = new Assets(id, assetsName, assetsType, assetsMoney, Remarks);
             return assets;
         }
         db.close();
         return null;
-    }
+    }*/
 
-    // 查询所有账户余额总
+    /**
+     * 查询所有资金余额总数
+     * @param username 登录用户
+     * @return 资金余额
+     */
     public Double findAssSumAll(String username) {
         Double moneySum = null;
         String sql = "select SUM(assetsMoney) from tb_assets where username = '" + username + "'";
@@ -100,6 +120,12 @@ public class AssetsDao {
         return moneySum;
     }
 
+    /**
+     * 查询某类型资产的全部资产信息
+     * @param name 资产类型名
+     * @param username 登录用户名
+     * @return 某类型资产的全部资产信息
+     */
     public Assets findByAssName(String name, String username) {
         // String sql = "select * from tb_assets where assetsName = '" + name + "' and
         // '" + username + "'";
@@ -112,7 +138,7 @@ public class AssetsDao {
             int id = cursor.getInt(0);
             String assetsName = cursor.getString(1);
             String assetsType = cursor.getString(2);
-            Double assetsMoney = cursor.getDouble(3);
+            double assetsMoney = cursor.getDouble(3);
             String Remarks = cursor.getString(4);
             Assets assets = new Assets(id, assetsName, assetsType, assetsMoney, Remarks);
             return assets;

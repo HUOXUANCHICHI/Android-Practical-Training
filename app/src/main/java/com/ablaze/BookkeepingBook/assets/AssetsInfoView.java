@@ -98,7 +98,7 @@ public class AssetsInfoView extends Activity {
             tv_assets_moneySum.setText("0.00");
         }
 
-        // tv_assets_moneySum.setText(LoginActivity.getmUsername());
+        // tv_assets_moneySum.setText(LoginActivity.getLoggingUsername());
         mCurrentView.setVisibility(View.VISIBLE);
     }
 

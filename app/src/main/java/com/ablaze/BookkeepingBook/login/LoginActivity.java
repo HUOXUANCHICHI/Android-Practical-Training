@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
      * 从SharedPreferences中根据用户名读取的密码
      */
     private String spPwd;
-    private CheckBox cb_remeberme;// 记住账户勾选框
+    private CheckBox cb_remeberme;// 记住账号勾选框
     private boolean IsChecked = false; // 是否记住密码的状态
     private SharedPreferences sps;
     private final String USERNAME = "USER_NAME";
@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
     /**
      * 登录的用户名
      */
-    public static String mUsername;
+    public static String loggingUsername;
     private RelativeLayout rl_title_bar;// 标题布局
 
     @Override
@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
         // 初始化控件
         init();
         // 回显数据密码
-        initDate();
+        initData();
     }
 
 
@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
      */
     private void saveLoginStatus(boolean status, String username) {
         //存为已登录的用户名
-        mUsername = username;
+        loggingUsername = username;
         // loginInfo表示文件名
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();// 获取编辑器
@@ -158,22 +158,25 @@ public class LoginActivity extends Activity {
             }
         });
         // 记住用户密码方法开始,根据监听的控件的变化进行操作
-        // 第一步，记住用户名
-        cb_remeberme.addTextChangedListener(new TextWatcher() {
+        // 第一步，记住用户名 数据回显
+        et_user_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //改变前
                 //这个方法被调用，说明在s字符串中，从start位置开始的count个字符即将被长度为after的新文本所取代。
                 // 在这个方法里面改变s，会报错。
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //改变时
                 //这个方法被调用，说明在s字符串中，从start位置开始的count个字符刚刚取代了长度为before的旧文本。
                 // 在这个方法里面改变s，会报错。
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                //改变后
                 //这个方法被调用，那么说明s字符串的某个地方已经被改变。
                 if (IsChecked) {
                     if (sps == null) {
@@ -187,7 +190,7 @@ public class LoginActivity extends Activity {
                 }
             }
         });
-        // 第二步，记住密码
+        // 第二步，记住密码 数据回显
         et_pwd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -221,11 +224,11 @@ public class LoginActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 IsChecked = isChecked;
                 if (isChecked) {
-                    // 实例化SharedPre。。。对象
+                    // 实例化SharedPreference对象
                     if (sps == null) {
                         sps = getApplicationContext().getSharedPreferences("config", Context.MODE_PRIVATE);
                     }
-                    // 实例化。。。的编辑者对象
+                    // 实例化SharedPreference的编辑者对象
                     SharedPreferences.Editor editor = sps.edit();
                     // 存储数据
                     editor.putString(USERNAME, et_user_name.getText().toString());
@@ -252,8 +255,7 @@ public class LoginActivity extends Activity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
             // 从注册界面传递过来的用户名
@@ -267,7 +269,7 @@ public class LoginActivity extends Activity {
     }
 
     // 记住密码之后下次登录时回显数据
-    private void initDate() {
+    private void initData() {
         if (sps == null) {
             sps = getApplicationContext().getSharedPreferences("config", Context.MODE_PRIVATE);
         }
@@ -278,8 +280,8 @@ public class LoginActivity extends Activity {
         cb_remeberme.setChecked(IsChecked);
     }
 
-    public static String getmUsername() {
-        return mUsername;
+    public static String getLoggingUsername() {
+        return loggingUsername;
     }
 
 }

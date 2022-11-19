@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,21 +25,29 @@ import com.ablaze.BookkeepingBook.entity.Account;
 public class AccountDescActivity extends Activity {
 
     private AlertDialog.Builder builder;
-    EditText et_accdesc_money, et_accdesc_remarks;
-    Spinner spinner_accdesc_type, spinner_accPaydesc_type;
     private TextView tv_main_title, tv_back;
     private RelativeLayout rl_title_bar;
-    ImageView backIv;
-    Button btn_accdesc_del, btn_accdesc_updata;
+    EditText et_acc_desc_money, et_acc_desc_remarks;
+    /**
+     * 账目类型 支出、收入
+     */
+    Spinner spinner_acc_desc_type;
+    /**
+     * 所属账户 微信、支付宝
+     */
+    Spinner spinner_acc_desc_payType;
+    Button btn_acc_desc_del, btn_acc_desc_update;
     private String etAccRemarks = "", spAccType = "", spAccPayType = "";
     private Double etAccMoney = 0.00;
     int id;
-    private AccountDao accountDao = new AccountDao(this);
+    private final AccountDao accountDao = new AccountDao(this);
 
-    // 获取控件上的字符串
+    /**
+     * 获取控件上的字符串
+     */
     private void getEditString() {
-        etAccMoney = Double.valueOf(et_accdesc_money.getText().toString().trim());
-        etAccRemarks = et_accdesc_remarks.getText().toString().trim();
+        etAccMoney = Double.valueOf(et_acc_desc_money.getText().toString().trim());
+        etAccRemarks = et_acc_desc_remarks.getText().toString().trim();
     }
 
     @Override
@@ -48,52 +57,55 @@ public class AccountDescActivity extends Activity {
         initView();
         // 接受上一级页面传来的数据
         Intent intent = getIntent();
-        Account Abean = (Account) intent.getSerializableExtra("account");
+        Account AccBean = (Account) intent.getSerializableExtra("account");
         // 设置显示控件
-        id = Abean.getId();
-        et_accdesc_money.setText(String.valueOf(Abean.getAccountMoney()));
-        et_accdesc_remarks.setText(Abean.getRemarks());
+        id = AccBean.getId();
+        et_acc_desc_money.setText(String.valueOf(AccBean.getAccountMoney()));
+        et_acc_desc_remarks.setText(AccBean.getRemarks());
 
-        spinner_accdesc_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner_acc_desc_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
-                spAccType = (String) spinner_accdesc_type.getSelectedItem();
+                spAccType = (String) spinner_acc_desc_type.getSelectedItem();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
+                Log.i("spinner_acc_desc_type未选择", "NothingSelected");
 
             }
         });
-        spinner_accPaydesc_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        spinner_acc_desc_payType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
-                spAccPayType = (String) spinner_accPaydesc_type.getSelectedItem();
+                spAccPayType = (String) spinner_acc_desc_payType.getSelectedItem();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
+                Log.i("spinner_acc_desc_payType未选择", "NothingSelected");
 
             }
         });
     }
 
     private void initView() {
-        et_accdesc_money = findViewById(R.id.et_accdesc_money);
-        et_accdesc_remarks = findViewById(R.id.et_accdesc_remarks);
-        spinner_accdesc_type = findViewById(R.id.spinner_accdesc_type);
-        spinner_accPaydesc_type = findViewById(R.id.spinner_accPaydesc_type);
-        tv_main_title = (TextView) findViewById(R.id.tv_main_title);
-        btn_accdesc_updata = (Button) findViewById(R.id.btn_accdesc_updata);
-        btn_accdesc_del = (Button) findViewById(R.id.btn_accdesc_del);
-        tv_main_title.setText("收支详情");
-        tv_back = (TextView) findViewById(R.id.tv_back);
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
+        tv_back = (TextView) findViewById(R.id.tv_back);
+        tv_main_title = (TextView) findViewById(R.id.tv_main_title);
         rl_title_bar.setBackgroundColor(Color.parseColor("#78A4FA"));
+        tv_main_title.setText("收支详情");
+
+        et_acc_desc_money = findViewById(R.id.et_acc_desc_money);
+        et_acc_desc_remarks = findViewById(R.id.et_acc_desc_remarks);
+        spinner_acc_desc_type = findViewById(R.id.spinner_acc_desc_type);
+        spinner_acc_desc_payType = findViewById(R.id.spinner_acc_desc_payType);
+
+        btn_acc_desc_update = (Button) findViewById(R.id.btn_acc_desc_update);
+        btn_acc_desc_del = (Button) findViewById(R.id.btn_acc_desc_del);
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,29 +113,26 @@ public class AccountDescActivity extends Activity {
             }
         });
 
-        // 保存按钮的点击事件
-        btn_accdesc_updata.setOnClickListener(new View.OnClickListener() {
+        // 修改按钮的点击事件
+        btn_acc_desc_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getEditString();
                 if (TextUtils.isEmpty(String.valueOf(etAccMoney))) {
+                    //金额输入框为空
                     Toast.makeText(AccountDescActivity.this, "请输入收支费用", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (TextUtils.isEmpty(etAccRemarks)) {
+                    //备注输入框为空
                     Toast.makeText(AccountDescActivity.this, "请输入备注", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
-                    /**
-                     * 两个按钮的 dialog
-                     */
+                    //两个按钮的 dialog
                     builder = new AlertDialog.Builder(AccountDescActivity.this).setIcon(R.mipmap.ic_launcher)
-                            .setTitle("修改收支费用信息")
-                            .setMessage("正在修改账户：" + etAccMoney + "，该操作不可撤销，是否确定修改？")
+                            .setTitle("修改账单费用信息")
+                            .setMessage("正在修改账单,金额：" + etAccMoney + "，该操作不可撤销，是否确定修改？")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    // ToDo: 你想做的事情
-                                    Toast.makeText(AccountDescActivity.this, "收支费用信息修改成功", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AccountDescActivity.this, "账单费用信息修改成功", Toast.LENGTH_SHORT).show();
                                     // 保存
                                     Double s = 0.0;
                                     if (spAccPayType.equals("收入")) {
@@ -140,7 +149,6 @@ public class AccountDescActivity extends Activity {
                             }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    // ToDo: 你想做的事情
                                     Toast.makeText(AccountDescActivity.this, "已取消修改", Toast.LENGTH_LONG).show();
                                     dialogInterface.dismiss();
                                 }
@@ -152,20 +160,22 @@ public class AccountDescActivity extends Activity {
         });
 
         // 删除按钮的点击事件
-        btn_accdesc_del.setOnClickListener(new View.OnClickListener() {
+        btn_acc_desc_del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getEditString();
+                //两个按钮的 dialog
                 builder = new AlertDialog.Builder(AccountDescActivity.this).setIcon(R.mipmap.ic_launcher)
-                        .setTitle("删除账户信息")
-                        .setMessage("正在删除账户：" + etAccMoney + "，该操作不可撤销，是否确定删除？")
+                        .setTitle("删除账单信息")
+                        .setMessage("正在删除账单：" + etAccMoney + "，该操作不可撤销，是否确定删除？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                // ToDo: 你想做的事情
                                 Toast.makeText(AccountDescActivity.this, "资产账户删除成功", Toast.LENGTH_SHORT).show();
                                 // 保存
                                 accountDao.deleteAccount(id);
+                                //todo 删除账单后增加资产数额
+                                //todo 删除弹窗finish后原页面不会刷新
                                 AccountDescActivity.this.finish();
                                 // 重新启动详情页面
                                 Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
@@ -174,7 +184,6 @@ public class AccountDescActivity extends Activity {
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                // ToDo: 你想做的事情
                                 Toast.makeText(AccountDescActivity.this, "已取消删除", Toast.LENGTH_LONG).show();
                                 dialogInterface.dismiss();
                             }

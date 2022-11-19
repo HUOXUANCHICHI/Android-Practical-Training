@@ -10,8 +10,8 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"/>
+        android:textColor="#FF0000"
+        android:textSize="35sp"/>
     <!--android:layout_centerInParent="true"属性将TextView置于父控件的中心位置-->
 
 </RelativeLayout>

@@ -35,11 +35,11 @@ public class AssetsDaoTest {
         accountDao = new AccountDao(InstrumentationRegistry.getInstrumentation().getTargetContext());
     }
 
-    @Test
+    /*@Test
     public void addTest() {
         assetsDao.addAssets("测试名称1111", "现金", 11.0, "您备注55555");
         Log.i("name", "-->添加成功");
-    }
+    }*/
 
     @Test
     public void deleteTest() {
@@ -53,29 +53,29 @@ public class AssetsDaoTest {
         Log.i("name", "-->更新成功");
     }
 
-    @Test
-    public void findbyId() {
-        Assets assets = assetsDao.findByid(1);
-        Log.i("name", "--findbyId查询结果 --> " + assets.toString());
-    }
+    /*@Test
+    public void findById() {
+        Assets assets = assetsDao.findById(1);
+        Log.i("name", "--findById查询结果 --> " + assets.toString());
+    }*/
 
-    @Test
+    /*@Test
     public void findAll() {
         List<Assets> assets = assetsDao.findAssAll();
         for (Assets u : assets) {
             Log.i("name", "--->findAll查询结果是-->" + u.toString());
         }
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void findsumAll() {
         List<Assets> assets = assetsDao.findAssAll();
         for (Assets u : assets) {
             Log.i("name", "--->findAll查询结果是-->" + u.toString());
         }
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void addAccount() {
         accountDao.addAccount(12.0, "dd", "1dw", "qdw", "1", "1");
         Log.i("name", "-->添加成功");
@@ -84,12 +84,12 @@ public class AssetsDaoTest {
             Log.i("name", "--->findAll查询结果是-->" + u.toString());
         }
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void listAssName() {
         accountDao.findAccAssName();
 
-    }
+    }*/
 
 }

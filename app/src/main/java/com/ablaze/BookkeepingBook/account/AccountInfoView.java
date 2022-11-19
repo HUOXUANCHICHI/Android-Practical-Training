@@ -19,9 +19,9 @@ public class AccountInfoView extends Activity {
 
     private TextView tv01, acc_money_sum;
     private Activity mContext;
-    private LayoutInflater mInflater;
+    private LayoutInflater mInflater;//布局加载器
     private View mCurrentView;
-    private RelativeLayout iv_toAddacc, btn_acc;
+    private RelativeLayout rt_acc_add_records, btn_acc;
     Double sum = 0.0;
 
     public AccountInfoView(Activity context) {
@@ -30,41 +30,45 @@ public class AccountInfoView extends Activity {
         mInflater = LayoutInflater.from(mContext);
     }
 
-    // 创建视图
+    /**
+     * 创建视图
+     */
     private void createView() {
         initView();
     }
 
-    // 获取界面控件
+    /**
+     * 获取界面控件
+     */
     private void initView() {
         // 设置布局文件
         mCurrentView = mInflater.inflate(R.layout.main_view_account, null);
-        iv_toAddacc = (RelativeLayout) mCurrentView.findViewById(R.id.iv_toAddacc);
-        btn_acc = (RelativeLayout) mCurrentView.findViewById(R.id.btn_acc_list);
+        rt_acc_add_records = (RelativeLayout) mCurrentView.findViewById(R.id.rt_acc_add_records);
+        btn_acc = (RelativeLayout) mCurrentView.findViewById(R.id.rt_acc_list);
         // 是否显示组件
         mCurrentView.setVisibility(View.VISIBLE);
 
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
         // 该月收支
         AccountDao accountDao = new AccountDao(mContext);
-        Double shouru = accountDao.findAccSumAll("收入", LoginActivity.getmUsername());
-        Log.i("该月收支-->收入", String.valueOf(shouru));
-        Double zhichu = accountDao.findAccSumAll("支出", LoginActivity.getmUsername());
-        Log.i("该月收支-->支出", String.valueOf(zhichu));
-        sum = shouru + zhichu;
-        Log.i("该月收支", "=" + shouru + "-" + zhichu + "最终=" + sum);
+        Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
+        Log.i("该月收支-->收入", String.valueOf(inCome));
+        Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
+        Log.i("该月收支-->支出", String.valueOf(payOut));
+        sum = inCome + payOut;
+        Log.i("该月收支", "=" + inCome + "-" + payOut + "最终=" + sum);
         if (readLoginStatus()) {
             acc_money_sum.setText(String.valueOf(sum));
         } else {
             acc_money_sum.setText("0.00");
         }
         // 添加的点击事件
-        iv_toAddacc.setOnClickListener(new View.OnClickListener() {
+        rt_acc_add_records.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (readLoginStatus()) {
                     // 跳转到添加界面
-                    Intent intent = new Intent(mContext, AccountAdd.class);
+                    Intent intent = new Intent(mContext, AccountAddActivity.class);
                     mContext.startActivityForResult(intent, 1);
                 } else {
                     Toast.makeText(mContext, "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
@@ -85,7 +89,11 @@ public class AccountInfoView extends Activity {
         });
     }
 
-    // 获取当前导航栏上方显示对应的View
+    /**
+     * 获取当前导航栏上方显示对应的View
+     *
+     * @return
+     */
     public View getView() {
         if (mCurrentView == null) {
             createView();
@@ -99,12 +107,12 @@ public class AccountInfoView extends Activity {
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
         // 该月收支
         AccountDao accountDao = new AccountDao(mContext);
-        Double shouru = accountDao.findAccSumAll("收入", LoginActivity.getmUsername());
-        Log.i("该月收支-->收入", String.valueOf(shouru));
-        Double zhichu = accountDao.findAccSumAll("支出", LoginActivity.getmUsername());
-        Log.i("该月收支-->支出", String.valueOf(zhichu));
-        sum = shouru + zhichu;
-        Log.i("该月收支", "=" + shouru + "-" + zhichu + "最终=" + sum);
+        Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
+        Log.i("该月收支-->收入", String.valueOf(inCome));
+        Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
+        Log.i("该月收支-->支出", String.valueOf(payOut));
+        sum = inCome + payOut;
+        Log.i("该月收支", "=" + inCome + "-" + payOut + "最终=" + sum);
         if (readLoginStatus()) {
             acc_money_sum.setText(String.valueOf(sum));
         } else {

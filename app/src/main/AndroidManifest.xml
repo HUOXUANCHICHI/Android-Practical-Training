@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
-        <activity android:name="com.ablaze.BookkeepingBook.account.AccountAdd" />
+        <activity android:name="com.ablaze.BookkeepingBook.account.AccountAddActivity" />
         <activity android:name="com.ablaze.BookkeepingBook.account.AccountList" />
         <activity android:name="com.ablaze.BookkeepingBook.account.AccountDescActivity" />
         <activity android:name="com.ablaze.BookkeepingBook.assets.AssetsList" />

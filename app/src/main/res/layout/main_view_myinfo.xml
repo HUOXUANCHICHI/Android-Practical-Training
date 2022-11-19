@@ -19,7 +19,7 @@
             android:contentDescription="@null"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="75dp"
-            android:src="@drawable/a1003"/>
+            android:src="@drawable/a1004"/>
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"

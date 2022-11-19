@@ -3,10 +3,25 @@ package com.ablaze.BookkeepingBook.entity;
 import java.io.Serializable;
 
 public class Assets implements Serializable {
+    /**
+     * 资产id
+     */
     private int id;
+    /**
+     * 资产名称
+     */
     private String assetsName;
+    /**
+     * 资产类型 现金、银行卡、支付宝、微信、其他
+     */
     private String assetsType;
+    /**
+     * 资产数目
+     */
     private Double assetsMoney;
+    /**
+     * 备注
+     */
     private String Remarks;
 
     @Override

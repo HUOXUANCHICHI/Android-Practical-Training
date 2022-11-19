@@ -26,14 +26,12 @@ public class RegisterActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         init();
     }
 
     private void init() {
-        // TODO Auto-generated method stub
         // 从main_title_bar.xml页面布局中获取对应的UI控件
         // 抽取成员变量ctrl+alt+F
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
@@ -47,6 +45,7 @@ public class RegisterActivity extends Activity {
         et_user_name = (EditText) findViewById(R.id.et_user_name);
         et_pwd = (EditText) findViewById(R.id.et_pwd);
         et_pwd_again = (EditText) findViewById(R.id.et_pwd_again);
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override // 关闭页面的点击事件
             public void onClick(View view) {// 设置按钮可以关闭当前页面
@@ -59,24 +58,25 @@ public class RegisterActivity extends Activity {
             @Override
             public void onClick(View view) {
                 // 点击后获取输入在响应控件中的字符串
-                getEditstring();
+                getEditString();
                 // 判断字符串是否为空
                 if (TextUtils.isEmpty(username)) {
+                    //用户名为空
                     Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (TextUtils.isEmpty(pwd)) {
+                    //密码为空
                     Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (TextUtils.isEmpty(pwd_again)) {
+                    //确认密码为空
                     Toast.makeText(RegisterActivity.this, "请再次输入密码", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (!pwd.equals(pwd_again)) {
+                    //密码与确认密码不匹配
                     Toast.makeText(RegisterActivity.this, "两次输入的密码不一样", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (isExistUserName(username)) {
+                    //用户已存在
                     Toast.makeText(RegisterActivity.this, "此用户已经存在", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
+                    //注册成功
                     Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                     // 把用户名和密码保存到SharedPreferences里面
                     saveRegisterInfo(username, pwd);
@@ -90,6 +90,11 @@ public class RegisterActivity extends Activity {
         });
     }
 
+    /**
+     * 把用户名和密码保存到SharedPreferences里面
+     * @param username 注册时输入的用用户名
+     * @param pwd 注册时输入的用密码
+     */
     private void saveRegisterInfo(String username, String pwd) {
         String md5Pwd = MD5Utils.MD5(pwd);// 把密码用MD5加密
         // loginInfo是sp的文件名
@@ -108,6 +113,7 @@ public class RegisterActivity extends Activity {
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         String spPwd = sp.getString(username, ""); // 通过sp.getString传值用户名获取到密码
         if (!TextUtils.isEmpty(spPwd)) { // 判断这个密码是否为空
+            //密码不为空表示存在该用户
             has_userName = true;// 该用户是否保存了这一个密码
         }
         return has_userName;
@@ -116,7 +122,7 @@ public class RegisterActivity extends Activity {
     /**
      * 获取控件中的字符串
      */
-    private void getEditstring() {
+    private void getEditString() {
         username = et_user_name.getText().toString().trim();
         pwd = et_pwd.getText().toString();
         pwd_again = et_pwd_again.getText().toString().trim();

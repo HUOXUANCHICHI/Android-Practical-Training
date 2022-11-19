@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorAccent">
+
     <include layout="@layout/main_title_bar"/>
+
     <EditText
         android:id="@+id/et_acc_money"
         android:layout_width="match_parent"
@@ -13,11 +15,11 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="85dp"
-        android:background="@drawable/shape_wihte_frame"
+        android:background="@drawable/shape_white_frame"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:hint="请输入收支费用"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:paddingLeft="10dp"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
@@ -28,7 +30,7 @@
         android:layout_marginRight="35dp"
         android:layout_marginTop="15dp"
         android:entries="@array/account_Type"
-        android:background="@drawable/shape_wihte_frame"
+        android:background="@drawable/shape_white_frame"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
     <Spinner
@@ -37,7 +39,7 @@
         android:layout_marginRight="35dp"
         android:layout_marginTop="15dp"
         android:entries="@array/acc_spinner_values"
-        android:background="@drawable/shape_wihte_frame"
+        android:background="@drawable/shape_white_frame"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
     <!--  循环读取资产的数值 并赋值到下面 -->
@@ -47,7 +49,7 @@
         android:layout_marginRight="35dp"
         android:layout_marginTop="15dp"
         android:entries="@array/assets_spinner_values"
-        android:background="@drawable/shape_wihte_frame"
+        android:background="@drawable/shape_white_frame"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
     <EditText
@@ -58,7 +60,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:background="@drawable/shape_wihte_frame"
+        android:background="@drawable/shape_white_frame"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:hint="@string/et_ass_remarks"

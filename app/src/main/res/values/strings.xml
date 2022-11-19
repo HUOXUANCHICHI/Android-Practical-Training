@@ -25,7 +25,7 @@
     <string name="et_new_pwd_again">请再次输入新密码</string>
     <string name="btn_save">保存</string>
     <!--资产的-->
-    <string name="et_assname">请输入账户名称</string>
+    <string name="et_ass_name">请输入资产名称</string>
     <string name="et_ass_money">请输入账户余额</string>
     <string name="et_ass_remarks">备注</string>
 </resources>

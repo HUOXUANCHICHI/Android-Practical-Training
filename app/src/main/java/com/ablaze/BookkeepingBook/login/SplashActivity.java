@@ -13,10 +13,10 @@ import com.ablaze.BookkeepingBook.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
+//启动APP时页面
 public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         // 设置此界面为竖屏
@@ -25,7 +25,6 @@ public class SplashActivity extends Activity {
     }
 
     private void init() {
-        // TODO Auto-generated method stub
         TextView tv_version = (TextView) findViewById(R.id.tv_version);
         try {
             // 获取程序包信息
@@ -48,7 +47,7 @@ public class SplashActivity extends Activity {
             }
         };
         timer.schedule(task, 2000);// timer.schedule用于开启TimerTask类
-                                   // 传递两个参数，第一个参数为TimerTask的对象，第二个参数为TimerTask和run()之间的时间差为3秒。
-        // 设置这个task在延迟3秒后自动执行
+        // 传递两个参数，第一个参数为TimerTask的对象，第二个参数为TimerTask和run()之间的时间差为3秒。
+        // 设置这个task在延迟2秒后自动执行
     }
 }

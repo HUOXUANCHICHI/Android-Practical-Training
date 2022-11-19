@@ -18,27 +18,37 @@ import com.ablaze.BookkeepingBook.util.AnalysisUtils;
 
 public class MyInfoView {
 
-    public ImageView iv_head_icon;
-    private LinearLayout ll_head;
-    private RelativeLayout rl_setting;
-    private TextView tv_user_name;
+    //顶部控件
+    private LinearLayout ll_head;//头像及背景的部分
+    public ImageView iv_head_icon;//我的 背景图
+    private TextView tv_user_name;// 我的 文字
+
+    private RelativeLayout rl_setting;//我的 设置
     private Activity mContext;
-    private LayoutInflater mInflater;
+    private LayoutInflater mInflater;//布局加载器
     private View mCurrentView;
 
+    /**
+     * 为以后将Layout转换为view时用 创建视图时使用
+     * @param context
+     */
     public MyInfoView(Activity context) {
         mContext = context;
         // 为以后将Layout转换为view时用
         mInflater = LayoutInflater.from(mContext);
     }
 
+    /**
+     * 创建视图
+     */
     private void createView() {
         initView();
     }
 
-    // 获取界面控件
+    /**
+     * 获取界面控件
+     */
     private void initView() {
-        // TODO Auto-generated method stub
         // 设置布局文件
         mCurrentView = mInflater.inflate(R.layout.main_view_myinfo, null);
         ll_head = (LinearLayout) mCurrentView.findViewById(R.id.ll_head);
@@ -46,7 +56,7 @@ public class MyInfoView {
         rl_setting = (RelativeLayout) mCurrentView.findViewById(R.id.rl_setting);
         tv_user_name = (TextView) mCurrentView.findViewById(R.id.tv_user_name);
         mCurrentView.setVisibility(View.VISIBLE);
-        setLoginParams(readLoginStatus());// 设置登录时界面控件的状态
+        this.setLoginParams(readLoginStatus());// 设置登录时界面控件的状态
 
         // 设置头像和用户名的点击时间
         ll_head.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +87,10 @@ public class MyInfoView {
         });
     }
 
-    // 登录成功后设置我的界面
+    /**
+     * 登录成功后设置我的界面的用户名
+     * @param isLogin 是否登录
+     */
     public void setLoginParams(boolean isLogin) {
         if (isLogin) {
             tv_user_name.setText(AnalysisUtils.readLoginUserName(mContext));
@@ -86,7 +99,10 @@ public class MyInfoView {
         }
     }
 
-    // 获取当前导航栏上方显示对应的View
+    /**
+     * 获取当前导航栏上方显示对应的View
+     * @return
+     */
     public View getView() {
         if (mCurrentView == null) {
             createView();
@@ -94,7 +110,9 @@ public class MyInfoView {
         return mCurrentView;
     }
 
-    // 显示当前导航栏上方显示对应的View界面
+    /**
+     * 显示当前导航栏上方显示对应的View界面
+     */
     public void showView() {
         if (mCurrentView == null) {
             createView();
@@ -102,7 +120,10 @@ public class MyInfoView {
         mCurrentView.setVisibility(View.VISIBLE);
     }
 
-    // 从SharedPreferences中读取登录状态
+    /**
+     * 从SharedPreferences中读取登录状态
+     * @return
+     */
     private boolean readLoginStatus() {
         SharedPreferences sp = mContext.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
         boolean isLogin = sp.getBoolean("isLogin", false);

@@ -15,26 +15,37 @@ import java.util.List;
 
 public class AccountAdapter extends BaseAdapter {
     Context context;
-    private List<Account> mDatas;
+    private final List<Account> mData;
 
-    public AccountAdapter(Context context, List<Account> mDatas) {
+    public AccountAdapter(Context context, List<Account> mData) {
         this.context = context;
-        this.mDatas = mDatas;
+        this.mData = mData;
     }
 
-    // 决定了ListView列表展示的行数
+    /**
+     * 决定了ListView列表展示的行数
+     * @return ListView列表展示的行数
+     */
     @Override
     public int getCount() {
-        return mDatas.size();
+        return mData.size();
     }
 
-    // 返回指定位置对应的数据
+    /**
+     * 返回指定位置对应的数据
+     * @param position
+     * @return
+     */
     @Override
     public Object getItem(int position) {
-        return mDatas.get(position);
+        return mData.get(position);
     }
 
-    // 返回指定位置所对应的id
+    /**
+     * 返回指定位置所对应的id
+     * @param position
+     * @return
+     */
     @Override
     public long getItemId(int position) {
         return position;
@@ -53,20 +64,28 @@ public class AccountAdapter extends BaseAdapter {
         }
         // 加载控件显示的内容
         // 获取集合指定位置的数据
-        final Account account = mDatas.get(position);
+        final Account account = mData.get(position);
 
         int picId = R.drawable.acc_other;
         String as = account.getAccountType();
-        if (as.equals("饮食")) {
-            picId = R.drawable.acc_eat;
-        } else if (as.equals("工资")) {
-            picId = R.drawable.acc_gongzi;
-        } else if (as.equals("交通")) {
-            picId = R.drawable.acc_jiaotong;
-        } else if (as.equals("医疗")) {
-            picId = R.drawable.acc_yiliao;
-        } else if (as.equals("其他")) {
-            picId = R.drawable.acc_other;
+        switch (as) {
+            case "饮食":
+                picId = R.drawable.acc_eat;
+                break;
+            case "工资":
+                picId = R.drawable.acc_salary;
+                break;
+            case "交通":
+                picId = R.drawable.acc_traffic;
+                break;
+            case "医疗":
+                picId = R.drawable.acc_medicine;
+                break;
+            case "其他":
+                picId = R.drawable.acc_other;
+                break;
+            default:
+                break;
         }
 
         holder.tvTitle.setText(account.getAssetsName());

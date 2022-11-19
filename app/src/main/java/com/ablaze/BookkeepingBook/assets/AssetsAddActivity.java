@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +22,9 @@ public class AssetsAddActivity extends Activity {
 
     private TextView tv_main_title, tv_back;
     private EditText et_ass_name, et_ass_money, et_ass_remarks;
+    /**
+     * 资产类型 现金、银行卡、支付宝、微信、其他
+     */
     private Spinner sp_ass_type;
     private Button btn_ass_save;
     private String etAssName = "", etAssRemarks = "", spAssType = "";
@@ -47,8 +51,7 @@ public class AssetsAddActivity extends Activity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-
+                Log.i("sp_ass_type未选择", "NothingSelected");
             }
         });
     }
@@ -57,15 +60,17 @@ public class AssetsAddActivity extends Activity {
     private void init() {
         // 修改顶部样式
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
+        tv_back = (TextView) findViewById(R.id.tv_back);
         tv_main_title.setText("添加资产");
         tv_main_title.setBackgroundColor(Color.parseColor("#78A4FA"));
         // rl_title_bar.setBackgroundColor(Color.parseColor("#78A4FA"));
-        sp_ass_type = (Spinner) findViewById(R.id.spinner_ass_type);
+
         et_ass_name = (EditText) findViewById(R.id.et_ass_name);
+        sp_ass_type = (Spinner) findViewById(R.id.spinner_ass_type);
         et_ass_money = (EditText) findViewById(R.id.et_ass_money);
         et_ass_remarks = (EditText) findViewById(R.id.et_ass_remarks);
         btn_ass_save = (Button) findViewById(R.id.btn_ass_save);
-        tv_back = (TextView) findViewById(R.id.tv_back);
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,19 +85,20 @@ public class AssetsAddActivity extends Activity {
             public void onClick(View v) {
                 getEditString();
                 if (TextUtils.isEmpty(etAssRemarks)) {
+                    //备注框为空 默认设置备注为无
                     etAssRemarks = "无";
-                }
-                if (TextUtils.isEmpty(etAssName)) {
+                }else if (TextUtils.isEmpty(etAssName)) {
+                    //资产名字为空
                     Toast.makeText(AssetsAddActivity.this, "请输入账户名称", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (TextUtils.isEmpty(etAssMoney)) {
+                    //资产金额为空
                     Toast.makeText(AssetsAddActivity.this, "请输入账户金额", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
+                    //三个输入框都齐全
                     Toast.makeText(AssetsAddActivity.this, spAssType, Toast.LENGTH_SHORT).show();
                     // 保存
-                    assetsDao.addAssets(etAssName, spAssType, Double.valueOf(etAssMoney), etAssRemarks,
-                            LoginActivity.getmUsername());
+                    assetsDao.addAssets(etAssName, spAssType, Double.parseDouble(etAssMoney), etAssRemarks,
+                            LoginActivity.getLoggingUsername());
                     AssetsAddActivity.this.finish();
                 }
             }
