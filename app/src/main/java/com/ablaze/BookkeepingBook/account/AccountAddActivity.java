@@ -142,13 +142,12 @@ public class AccountAddActivity extends Activity {
             @Override
             public void onClick(View v) {
                 getEditString();
-                if (TextUtils.isEmpty(etAccRemarks)) {
-                    //备注为空 默认设置备注为无
-                    // Toast.makeText(AccountAdd.this, "请输入备注", Toast.LENGTH_SHORT).show();
-                    etAccRemarks = "无";
-                }else if (TextUtils.isEmpty(etAccMoney)) {
+                if (TextUtils.isEmpty(etAccMoney)) {
                     //账单金额为空
                     Toast.makeText(AccountAddActivity.this, "请输入收支金额", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(etAccRemarks)) {
+                    //备注为空
+                    Toast.makeText(AccountAddActivity.this, "请输入备注", Toast.LENGTH_SHORT).show();
                 } else {
                     //两编辑框边不为空
                     Toast.makeText(AccountAddActivity.this, "收支添加成功", Toast.LENGTH_SHORT).show();

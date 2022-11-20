@@ -84,15 +84,14 @@ public class AssetsAddActivity extends Activity {
             @Override
             public void onClick(View v) {
                 getEditString();
-                if (TextUtils.isEmpty(etAssRemarks)) {
-                    //备注框为空 默认设置备注为无
-                    etAssRemarks = "无";
-                }else if (TextUtils.isEmpty(etAssName)) {
+                if (TextUtils.isEmpty(etAssName)) {
                     //资产名字为空
                     Toast.makeText(AssetsAddActivity.this, "请输入账户名称", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(etAssMoney)) {
                     //资产金额为空
                     Toast.makeText(AssetsAddActivity.this, "请输入账户金额", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(etAssRemarks)) {
+                    Toast.makeText(AssetsAddActivity.this, "请输入备注", Toast.LENGTH_SHORT).show();
                 } else {
                     //三个输入框都齐全
                     Toast.makeText(AssetsAddActivity.this, spAssType, Toast.LENGTH_SHORT).show();
