@@ -82,4 +82,14 @@ public class AssetsList extends Activity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        onCreate(null);
+
+    }
+
 }

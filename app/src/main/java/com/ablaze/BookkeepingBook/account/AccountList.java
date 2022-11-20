@@ -66,6 +66,8 @@ public class AccountList extends Activity {
             }
         });
 
+
+
     }
 
     private void setListener() {
@@ -79,6 +81,18 @@ public class AccountList extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    /**
+     * 调用onCreate(), 目的是刷新数据,  从另一activity界面返回到该activity界面时, 此方法自动调用
+     */
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        onCreate(null);
+
     }
 
 }

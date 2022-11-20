@@ -180,11 +180,9 @@ public class AssetsDescActivity extends Activity {
                                 // 保存
                                 assetsDao.deleteAssets(id);
                                 AssetsDescActivity.this.finish();
-                                //todo 删除弹窗finish后原页面不会刷新
-
                                 // 重新启动详情页面
-                                Intent intent = new Intent(AssetsDescActivity.this, AssetsList.class);
-                                startActivity(intent);
+                                /*Intent intent = new Intent(AssetsDescActivity.this, AssetsList.class);
+                                startActivity(intent);*/
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override

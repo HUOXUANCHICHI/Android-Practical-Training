@@ -266,11 +266,10 @@ public class AccountDescActivity extends Activity {
                                 } else {
                                     System.out.println("assets为空");
                                 }
-                                //todo 删除弹窗finish后原页面不会刷新
                                 AccountDescActivity.this.finish();
                                 // 重新启动详情页面
-                                Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
-                                startActivity(intent);
+                                /*Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
+                                startActivity(intent);*/
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
@@ -284,5 +283,6 @@ public class AccountDescActivity extends Activity {
         });
 
     }
+
 
 }
