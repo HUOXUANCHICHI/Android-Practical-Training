@@ -18,7 +18,7 @@ public class SettingActivity extends Activity {
 
     private TextView tv_main_title, tv_back;
     private RelativeLayout rl_title_bar, rl_modify_psw, rl_exit_login;
-//    public static SettingActivity instance = null;
+    public static SettingActivity instance = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class SettingActivity extends Activity {
         setContentView(R.layout.activity_setting);
         // 设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-//        instance = this;
-//        System.out.println("====================="+instance+"=============");
+        instance = this;
+        System.out.println("====================="+instance+"=============");
         init();
     }
 
@@ -52,8 +52,6 @@ public class SettingActivity extends Activity {
         rl_modify_psw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo 修改密码intent second
-
                 // 跳转到修改密码的界面
                 Intent intent = new Intent(SettingActivity.this, ModifyPwdActivity.class);
                 startActivity(intent);

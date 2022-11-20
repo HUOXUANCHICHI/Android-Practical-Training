@@ -108,11 +108,15 @@ public class ModifyPwdActivity extends Activity {
                     // 修改登录成功时保存在SharedPreferences中的密码
                     modifyPsw(newPsw);
                     Intent intent = new Intent(ModifyPwdActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    //无效结束setting
-//                    SettingActivity.instance.finish();
-//                    System.out.println("===========setting finish====");
-                    //todo 记住账号状况下密码框bug
+//                    startActivity(intent);
+
+                    intent.putExtra("newPsw",newPsw);
+                    System.out.println("newPsw=" + newPsw);
+                    setResult(2,intent);
+//                    startActivityForResult(intent,2);
+
+                    SettingActivity.instance.finish();
+                    System.out.println("===========setting finish====");
                     ModifyPwdActivity.this.finish();
                 }
             }

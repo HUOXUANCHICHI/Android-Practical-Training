@@ -83,7 +83,8 @@ public class RegisterActivity extends Activity {
                     // 注册成功后通过Intent把用户名传递到LoginActivity.java中
                     Intent data = new Intent();
                     data.putExtra("username", username);
-                    setResult(RESULT_OK, data);// setResult为OK，关闭当前页面
+                    data.putExtra("pwd", pwd);
+                    setResult(1, data);// setResult为OK，关闭当前页面
                     RegisterActivity.this.finish();// 在登录的时候，如果用户还没有注册则注册。注册成功后把注册成功后的用户名返回给前一个页面
                 }
             }

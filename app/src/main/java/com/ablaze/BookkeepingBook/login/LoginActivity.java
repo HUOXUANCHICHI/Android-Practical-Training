@@ -257,14 +257,25 @@ public class LoginActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null) {
-            // 从注册界面传递过来的用户名
-            String username = data.getStringExtra("username");
-            if (!TextUtils.isEmpty(username)) {
-                et_user_name.setText(username);
-                // 设置光标的位置上
-                et_user_name.setSelection(username.length());
+        switch (requestCode) {
+            case 1: {
+                if (data != null) {
+                    // 从注册界面传递过来的用户名
+                    String username = data.getStringExtra("username");
+                    if (!TextUtils.isEmpty(username)) {
+                        et_user_name.setText(username);
+                        // 设置光标的位置上
+                        System.out.println(username.length());
+                        et_user_name.setSelection(username.length());
+                        pwd = data.getStringExtra("pwd");
+                        System.out.println(pwd);
+                        et_pwd.setText(pwd);
+                    }
+                }
+                break;
             }
+            default:
+                break;
         }
     }
 
