@@ -13,7 +13,7 @@ public class Account implements Serializable {
      */
     private double accountMoney;
     /**
-     * 账目分类 衣食住行其他
+     * 账目分类 饮食、工资、交通、医疗、其他
      */
     private String accountType;
     /**
@@ -21,7 +21,7 @@ public class Account implements Serializable {
      */
     private String payType;
     /**
-     * 所属账户 微信、支付宝
+     * 账单所属资产类型名称 现金、银行卡、支付宝、微信、其他
      */
     private String assetsName;
     /**

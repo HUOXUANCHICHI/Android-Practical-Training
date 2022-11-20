@@ -63,7 +63,13 @@ public class AccountDescActivity extends Activity {
         Account AccBean = (Account) intent.getSerializableExtra("account");
         // 设置显示控件
         id = AccBean.getId();
-        et_acc_desc_money.setText(String.valueOf(0-AccBean.getAccountMoney()));
+        System.out.println("AccBean.getAccountMoney()=" + AccBean.getAccountMoney());
+        if (AccBean.getPayType().equals("支出")) {
+            et_acc_desc_money.setText(String.valueOf(0 - AccBean.getAccountMoney()));
+        } else if (AccBean.getPayType().equals("收入")){
+            et_acc_desc_money.setText(String.valueOf(AccBean.getAccountMoney()));
+        }
+//        et_acc_desc_money.setText(String.valueOf(AccBean.getAccountMoney()));
         //设置单笔账单详情的账目分类(衣食住行其他)下拉列表框选中
         System.out.println("AccBean.getAccountType()=" + AccBean.getAccountType());
         switch (AccBean.getAccountType()) {
@@ -162,7 +168,7 @@ public class AccountDescActivity extends Activity {
                     //备注输入框为空
                     Toast.makeText(AccountDescActivity.this, "请输入备注", Toast.LENGTH_SHORT).show();
                 } else {
-                    //两个按钮的 dialog
+                    //两个按钮的 dialog 修改
                     builder = new AlertDialog.Builder(AccountDescActivity.this).setIcon(R.mipmap.ic_launcher)
                             .setTitle("修改账单费用信息")
                             .setMessage("正在修改账单,金额：" + etAccMoney + "，该操作不可撤销，是否确定修改？")
@@ -170,14 +176,37 @@ public class AccountDescActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Toast.makeText(AccountDescActivity.this, "账单费用信息修改成功", Toast.LENGTH_SHORT).show();
+
                                     // 保存
-                                    Double s = 0.0;
-                                    if (spAccPayType.equals("收入")) {
-                                        s = Double.valueOf(etAccMoney);
+                                    Double s = Double.parseDouble(etAccMoney);
+                                    System.out.println(s);
+
+                                    Intent data = getIntent();
+                                    Account AccBean = (Account) data.getSerializableExtra("account");
+                                    Toast.makeText(AccountDescActivity.this, String.valueOf(AccBean.getAssetsName()), Toast.LENGTH_SHORT).show();
+                                    Assets assets = assetsDao.findByAssId(String.valueOf(AccBean.getAssetsName()),
+                                            LoginActivity.getLoggingUsername());// 查询某资产类型的全部资产信息
+                                    if (assets != null) {
+                                        if (AccBean.getPayType().equals("收入")) {
+                                            Double cha = AccBean.getAccountMoney() - s;
+                                            Double s1 = assets.getAssetsMoney() - cha;// 资产的和这里的相加
+                                            System.out.println(s1);
+                                            accountDao.updateAccount(id, s, spAccType, spAccPayType, etAccRemarks);
+                                            assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
+                                                    s1,
+                                                    assets.getRemarks());
+                                        } else if (AccBean.getPayType().equals("支出")) {
+                                            Double cha = -(AccBean.getAccountMoney()) - s;
+                                            Double s1 = assets.getAssetsMoney() + cha;
+                                            System.out.println(s1);
+                                            accountDao.updateAccount(id, -s, spAccType, spAccPayType, etAccRemarks);
+                                            assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
+                                                    s1,
+                                                    assets.getRemarks());
+                                        }
                                     } else {
-                                        s = 0.0 - Double.valueOf(etAccMoney);
+                                        System.out.println("assets为空");
                                     }
-                                    accountDao.updateAccount(id, s, spAccType, spAccPayType, etAccRemarks);
                                     AccountDescActivity.this.finish();
                                     // 重新启动详情页面
                                     Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
@@ -201,7 +230,7 @@ public class AccountDescActivity extends Activity {
             @Override
             public void onClick(View v) {
                 getEditString();
-                //两个按钮的 dialog
+                //两个按钮的 dialog 删除
                 builder = new AlertDialog.Builder(AccountDescActivity.this).setIcon(R.mipmap.ic_launcher)
                         .setTitle("删除账单信息")
                         .setMessage("正在删除账单：" + etAccMoney + "，该操作不可撤销，是否确定删除？")
@@ -211,20 +240,29 @@ public class AccountDescActivity extends Activity {
                                 Toast.makeText(AccountDescActivity.this, "资产账户删除成功", Toast.LENGTH_SHORT).show();
                                 // 保存
                                 accountDao.deleteAccount(id);
-                                //s为输入框中的数(有正有负)
-                                Double s = Double.parseDouble(etAccMoney);
-                                System.out.println(s);
+
                                 Intent data = getIntent();
                                 Account AccBean = (Account) data.getSerializableExtra("account");
                                 Toast.makeText(AccountDescActivity.this, String.valueOf(AccBean.getAssetsName()), Toast.LENGTH_SHORT).show();
                                 Assets assets = assetsDao.findByAssId(String.valueOf(AccBean.getAssetsName()),
-                                        LoginActivity.getLoggingUsername());// 查询某id的全部资产信息
+                                        LoginActivity.getLoggingUsername());// 查询某资产类型的全部资产信息
                                 if (assets != null) {
-                                    Double s1 = assets.getAssetsMoney() + s;// 资产的和这里的相加
-                                    System.out.println(s1);
-                                    assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
-                                            s1,
-                                            assets.getRemarks());
+                                    //s为输入框中的数(恒正)
+                                    Double s = Double.parseDouble(etAccMoney);
+                                    System.out.println(s);
+                                    if (AccBean.getPayType().equals("收入")) {
+                                        Double s1 = assets.getAssetsMoney() - s;// 资产的和这里的相加
+                                        System.out.println(s1);
+                                        assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
+                                                s1,
+                                                assets.getRemarks());
+                                    } else if (AccBean.getPayType().equals("支出")){
+                                        Double s1 = assets.getAssetsMoney() + s;// 资产的和这里的相加
+                                        System.out.println(s1);
+                                        assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
+                                                s1,
+                                                assets.getRemarks());
+                                    }
                                 } else {
                                     System.out.println("assets为空");
                                 }
