@@ -42,13 +42,12 @@ public class AccountAddActivity extends Activity {
      */
     private Spinner spinner_acc_assName;
     private Button btn_acc_save;
-    private String etAccName = "", etAccRemarks = "", spAccType = "", spAccPayType = "", spAssName = "";
-    private String etAccMoney;
+    private String etAccMoney = "", etAccRemarks = "", spAccType = "", spAccPayType = "", spAssName = "";
     private AccountDao accountDao = new AccountDao(this);
     private AssetsDao assetsDao = new AssetsDao(this);
-    List<Assets> allList;
-    private ArrayAdapter<String> arr_adapter;
-    private ArrayAdapter<CharSequence> spinner_acc_assName_List;
+    /*List<Assets> allList;*/
+    /*private ArrayAdapter<String> arr_adapter;
+    private ArrayAdapter<CharSequence> spinner_acc_assName_List;*/
 
     // 为List集合添加内容，用于列表显示
     /*List<String> data_list = new ArrayList<>();*/
@@ -65,8 +64,8 @@ public class AccountAddActivity extends Activity {
         init();
 
         // 下拉框动态赋值
-        allList = assetsDao.findAssAll(LoginActivity.getLoggingUsername());
-        Log.i("数据", allList.toString());
+        /*allList = assetsDao.findAssAll(LoginActivity.getLoggingUsername());
+        Log.i("数据", allList.toString());*/
         /*for (int i = 0; i < allList.size(); i++) {
             Assets assetss = allList.get(i);
             String AssetsName = assetss.getAssetsName();

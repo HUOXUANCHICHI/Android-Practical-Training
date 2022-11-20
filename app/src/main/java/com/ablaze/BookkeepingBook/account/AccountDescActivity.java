@@ -20,7 +20,10 @@ import android.widget.Toast;
 
 import com.ablaze.BookkeepingBook.R;
 import com.ablaze.BookkeepingBook.dao.AccountDao;
+import com.ablaze.BookkeepingBook.dao.AssetsDao;
 import com.ablaze.BookkeepingBook.entity.Account;
+import com.ablaze.BookkeepingBook.entity.Assets;
+import com.ablaze.BookkeepingBook.login.LoginActivity;
 
 public class AccountDescActivity extends Activity {
 
@@ -37,16 +40,16 @@ public class AccountDescActivity extends Activity {
      */
     Spinner spinner_acc_desc_payType;
     Button btn_acc_desc_del, btn_acc_desc_update;
-    private String etAccRemarks = "", spAccType = "", spAccPayType = "";
-    private Double etAccMoney = 0.00;
+    private String etAccMoney = "", spAccType = "", spAccPayType = "", etAccRemarks = "";
     int id;
     private final AccountDao accountDao = new AccountDao(this);
+    private AssetsDao assetsDao = new AssetsDao(this);
 
     /**
      * 获取控件上的字符串
      */
     private void getEditString() {
-        etAccMoney = Double.valueOf(et_acc_desc_money.getText().toString().trim());
+        etAccMoney = et_acc_desc_money.getText().toString().trim();
         etAccRemarks = et_acc_desc_remarks.getText().toString().trim();
     }
 
@@ -61,13 +64,34 @@ public class AccountDescActivity extends Activity {
         // 设置显示控件
         id = AccBean.getId();
         et_acc_desc_money.setText(String.valueOf(AccBean.getAccountMoney()));
-        et_acc_desc_remarks.setText(AccBean.getRemarks());
-
+        //设置单笔账单详情的账目分类(衣食住行其他)下拉列表框选中
+        System.out.println("AccBean.getAccountType()=" + AccBean.getAccountType());
+        switch (AccBean.getAccountType()) {
+            case "饮食":
+                spinner_acc_desc_type.setSelection(0);
+                break;
+            case "工资":
+                spinner_acc_desc_type.setSelection(1);
+                break;
+            case "交通":
+                spinner_acc_desc_type.setSelection(2);
+                break;
+            case "医疗":
+                spinner_acc_desc_type.setSelection(3);
+                break;
+            case "其他":
+                spinner_acc_desc_type.setSelection(4);
+                break;
+            default:
+                break;
+        }
         spinner_acc_desc_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
                 spAccType = (String) spinner_acc_desc_type.getSelectedItem();
+                System.out.println("spAccType=" + spAccType);
+//                Toast.makeText(AccountDescActivity.this, spAccType, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -76,20 +100,33 @@ public class AccountDescActivity extends Activity {
 
             }
         });
-
+        //设置单笔账单详情的账目类型(支出、收入)下拉列表框选中
+        System.out.println("AccBean.getPayType()=" + AccBean.getPayType());
+        switch (AccBean.getPayType()) {
+            case "支出":
+                spinner_acc_desc_payType.setSelection(0);
+                break;
+            case "收入":
+                spinner_acc_desc_payType.setSelection(1);
+                break;
+            default:
+                break;
+        }
         spinner_acc_desc_payType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
                 spAccPayType = (String) spinner_acc_desc_payType.getSelectedItem();
+                System.out.println("spAccPayType=" + spAccPayType);
+//                Toast.makeText(AccountDescActivity.this, spAccPayType, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Log.i("spinner_acc_desc_payType未选择", "NothingSelected");
-
             }
         });
+        et_acc_desc_remarks.setText(AccBean.getRemarks());
     }
 
     private void initView() {
@@ -175,6 +212,15 @@ public class AccountDescActivity extends Activity {
                                 // 保存
                                 accountDao.deleteAccount(id);
                                 //todo 删除账单后增加资产数额
+                                Double s = 0.0;
+                                if (spAccPayType.equals("收入")) {
+                                    s = Double.parseDouble(etAccMoney);
+                                } else if (spAccPayType.equals("支出")){
+                                    s = 0.0 - Double.parseDouble(etAccMoney);
+                                }
+                                Toast.makeText(AccountDescActivity.this, etAccMoney, Toast.LENGTH_SHORT).show();
+                                Assets assets = assetsDao.findByAssName(spAccType,
+                                        LoginActivity.getLoggingUsername());// 查询某类型资产的全部资产信息
                                 //todo 删除弹窗finish后原页面不会刷新
                                 AccountDescActivity.this.finish();
                                 // 重新启动详情页面

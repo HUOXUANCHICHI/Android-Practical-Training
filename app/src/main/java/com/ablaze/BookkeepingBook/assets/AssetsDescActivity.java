@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ablaze.BookkeepingBook.R;
+import com.ablaze.BookkeepingBook.account.AccountDescActivity;
 import com.ablaze.BookkeepingBook.dao.AssetsDao;
 import com.ablaze.BookkeepingBook.entity.Assets;
 
@@ -57,15 +58,35 @@ public class AssetsDescActivity extends Activity {
         Assets AssBean = (Assets) intent.getSerializableExtra("assets");
         // 设置显示控件
         id = AssBean.getId();
-        et_ass_desc_name.setText(AssBean.getAssetsName());
-        et_ass_desc_money.setText(String.valueOf(AssBean.getAssetsMoney()));
-        et_ass_desc_remarks.setText(AssBean.getRemarks());
-
+        et_ass_desc_name.setText(AssBean.getAssetsType());
+        //设置单笔账单详情的资产类型(现金、银行卡、支付宝、微信、其他)下拉列表框选中
+        System.out.println("AccBean.getAssetsType()=" + AssBean.getAssetsType());
+        switch (AssBean.getAssetsType()) {
+            case "现金":
+                spinner_ass_desc_type.setSelection(0);
+                break;
+            case "银行卡":
+                spinner_ass_desc_type.setSelection(1);
+                break;
+            case "支付宝":
+                spinner_ass_desc_type.setSelection(2);
+                break;
+            case "微信":
+                spinner_ass_desc_type.setSelection(3);
+                break;
+            case "其他":
+                spinner_ass_desc_type.setSelection(4);
+                break;
+            default:
+                break;
+        }
         spinner_ass_desc_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
                 spAssType = (String) spinner_ass_desc_type.getSelectedItem();
+                System.out.println("spAssType=" + spAssType);
+                Toast.makeText(AssetsDescActivity.this, spAssType, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -73,6 +94,9 @@ public class AssetsDescActivity extends Activity {
                 Log.i("spinner_ass_desc_type未选择", "NothingSelected");
             }
         });
+        et_ass_desc_money.setText(String.valueOf(AssBean.getAssetsMoney()));
+        et_ass_desc_remarks.setText(AssBean.getRemarks());
+
     }
 
     private void initView() {

@@ -53,6 +53,7 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //todo 修改密码intent second
+
                 // 跳转到修改密码的界面
                 Intent intent = new Intent(SettingActivity.this, ModifyPwdActivity.class);
                 startActivity(intent);
