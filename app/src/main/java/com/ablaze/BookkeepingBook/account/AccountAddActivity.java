@@ -42,7 +42,7 @@ public class AccountAddActivity extends Activity {
      */
     private Spinner spinner_acc_assName;
     private Button btn_acc_save;
-    private String etAccMoney = "", etAccRemarks = "", spAccType = "", spAccPayType = "", spAssName = "";
+    private String etAccMoney = "", spAccType = "", spAccPayType = "", etAccRemarks = "", spAssName = "";
     private AccountDao accountDao = new AccountDao(this);
     private AssetsDao assetsDao = new AssetsDao(this);
     /*List<Assets> allList;*/
@@ -159,11 +159,15 @@ public class AccountAddActivity extends Activity {
                     String time = simpleDateFormat.format(date);
                     Log.i("name", time);
                     Double s = 0.0;
+                    //s为输入框中的数
                     if (spAccPayType.equals("收入")) {
+                        //正数
                         s = Double.parseDouble(etAccMoney);
                     } else if (spAccPayType.equals("支出")){
+                        //负数
                         s = 0.0 - Double.parseDouble(etAccMoney);
                     }
+                    //打印资产名称
                     Toast.makeText(AccountAddActivity.this, spAssName, Toast.LENGTH_SHORT).show();
                     // boolean assets = assetsDao.findByAssName(spAssName,
                     // LoginActivity.getLoggingUsername());// 从资产获取资产名称下的多少钱

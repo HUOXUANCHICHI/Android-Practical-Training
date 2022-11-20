@@ -63,7 +63,7 @@ public class AccountDescActivity extends Activity {
         Account AccBean = (Account) intent.getSerializableExtra("account");
         // 设置显示控件
         id = AccBean.getId();
-        et_acc_desc_money.setText(String.valueOf(AccBean.getAccountMoney()));
+        et_acc_desc_money.setText(String.valueOf(0-AccBean.getAccountMoney()));
         //设置单笔账单详情的账目分类(衣食住行其他)下拉列表框选中
         System.out.println("AccBean.getAccountType()=" + AccBean.getAccountType());
         switch (AccBean.getAccountType()) {
@@ -211,16 +211,23 @@ public class AccountDescActivity extends Activity {
                                 Toast.makeText(AccountDescActivity.this, "资产账户删除成功", Toast.LENGTH_SHORT).show();
                                 // 保存
                                 accountDao.deleteAccount(id);
-                                //todo 删除账单后增加资产数额
-                                Double s = 0.0;
-                                if (spAccPayType.equals("收入")) {
-                                    s = Double.parseDouble(etAccMoney);
-                                } else if (spAccPayType.equals("支出")){
-                                    s = 0.0 - Double.parseDouble(etAccMoney);
+                                //s为输入框中的数(有正有负)
+                                Double s = Double.parseDouble(etAccMoney);
+                                System.out.println(s);
+                                Intent data = getIntent();
+                                Account AccBean = (Account) data.getSerializableExtra("account");
+                                Toast.makeText(AccountDescActivity.this, String.valueOf(AccBean.getAssetsName()), Toast.LENGTH_SHORT).show();
+                                Assets assets = assetsDao.findByAssId(String.valueOf(AccBean.getAssetsName()),
+                                        LoginActivity.getLoggingUsername());// 查询某id的全部资产信息
+                                if (assets != null) {
+                                    Double s1 = assets.getAssetsMoney() + s;// 资产的和这里的相加
+                                    System.out.println(s1);
+                                    assetsDao.updateAssets(assets.getId(), assets.getAssetsName(), assets.getAssetsType(),
+                                            s1,
+                                            assets.getRemarks());
+                                } else {
+                                    System.out.println("assets为空");
                                 }
-                                Toast.makeText(AccountDescActivity.this, etAccMoney, Toast.LENGTH_SHORT).show();
-                                Assets assets = assetsDao.findByAssName(spAccType,
-                                        LoginActivity.getLoggingUsername());// 查询某类型资产的全部资产信息
                                 //todo 删除弹窗finish后原页面不会刷新
                                 AccountDescActivity.this.finish();
                                 // 重新启动详情页面

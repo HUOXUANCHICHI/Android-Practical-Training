@@ -146,4 +146,26 @@ public class AssetsDao {
         db.close();
         return null;
     }
+
+    public Assets findByAssId(String assetsname, String username) {
+        // String sql = "select * from tb_assets where assetsName = '" + name + "' and
+        // '" + username + "'";
+        String sql = "SELECT * FROM tb_assets WHERE assetsName = '" + assetsname + "' and username = '" + username + "'";
+        Log.i("该月查询根据id资产sql语句", sql);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        // 判断cursor.moveToFirst()的值为true或false来确定查询结果是否为空
+        // cursor.moveToNext()是用来做循环的
+        if (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String assetsName = cursor.getString(1);
+            String assetsType = cursor.getString(2);
+            double assetsMoney = cursor.getDouble(3);
+            String Remarks = cursor.getString(4);
+            Assets assets = new Assets(id, assetsName, assetsType, assetsMoney, Remarks);
+            return assets;
+        }
+        db.close();
+        return null;
+    }
 }
