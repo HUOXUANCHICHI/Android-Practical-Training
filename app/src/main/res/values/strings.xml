@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BookkeepingBook</string>
+    <string name="app_name">赤赤校园理财</string>
     <!--    注册的-->
     <string name="register">注册</string>
     <string name="name">请输入用户名</string>

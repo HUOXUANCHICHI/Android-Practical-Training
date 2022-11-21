@@ -6,14 +6,22 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ablaze.bookkeepingbook"
+        applicationId "com.ablaze.chichicampusfinance"
         minSdk 28
         targetSdk 33
         versionCode 1
-        versionName "2.10"
+        versionName "2.11"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    // 自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "ChiChiCampusFinance.apk"
+        }
+    }
+
 
     buildTypes {
         release {
