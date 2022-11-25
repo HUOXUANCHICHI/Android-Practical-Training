@@ -151,9 +151,9 @@ public class AssetsDao {
      *  查询某类型名称的全部资产信息
      * @param assets_type_name 资产类型 现金、银行卡、支付宝、微信、其他
      * @param username 已登录用户名
-     * @return
+     * @return 查询某类型名称的全部资产信息
      */
-    public Assets findByAssId(String assets_type_name, String username) {
+    public Assets findByAssType(String assets_type_name, String username) {
         // String sql = "select * from tb_assets where assetsName = '" + name + "' and
         // '" + username + "'";
         String sql = "SELECT * FROM tb_assets WHERE assetsType = '" + assets_type_name + "' and username = '" + username + "'";

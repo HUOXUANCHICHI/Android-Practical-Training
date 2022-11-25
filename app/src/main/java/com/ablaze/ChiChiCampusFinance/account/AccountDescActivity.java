@@ -183,7 +183,7 @@ public class AccountDescActivity extends Activity {
                                     Intent data = getIntent();
                                     Account AccBean = (Account) data.getSerializableExtra("account");
                                     Toast.makeText(AccountDescActivity.this, String.valueOf(AccBean.getAssetsName()), Toast.LENGTH_SHORT).show();
-                                    Assets assets = assetsDao.findByAssId(String.valueOf(AccBean.getAssetsName()),
+                                    Assets assets = assetsDao.findByAssType(String.valueOf(AccBean.getAssetsName()),
                                             LoginActivity.getLoggingUsername());// 查询某资产类型的全部资产信息
                                     if (assets != null) {
                                         if (AccBean.getPayType().equals("收入")) {
@@ -208,8 +208,8 @@ public class AccountDescActivity extends Activity {
                                     }
                                     AccountDescActivity.this.finish();
                                     // 重新启动详情页面
-                                    Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
-                                    startActivity(intent);
+                                    /*Intent intent = new Intent(AccountDescActivity.this, AccountList.class);
+                                    startActivity(intent);*/
                                 }
                             }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                 @Override
@@ -243,7 +243,7 @@ public class AccountDescActivity extends Activity {
                                 Intent data = getIntent();
                                 Account AccBean = (Account) data.getSerializableExtra("account");
                                 Toast.makeText(AccountDescActivity.this, String.valueOf(AccBean.getAssetsName()), Toast.LENGTH_SHORT).show();
-                                Assets assets = assetsDao.findByAssId(String.valueOf(AccBean.getAssetsName()),
+                                Assets assets = assetsDao.findByAssType(String.valueOf(AccBean.getAssetsName()),
                                         LoginActivity.getLoggingUsername());// 查询某资产类型的全部资产信息
                                 if (assets != null) {
                                     //s为输入框中的数(恒正)

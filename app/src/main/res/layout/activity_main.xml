@@ -28,34 +28,6 @@
         android:background="#F2F2F2"
         android:orientation="horizontal">
         <RelativeLayout
-            android:id="@+id/bottom_bar_account_btn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/bottom_bar_text_account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="3dp"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="@string/index"
-                android:textColor="#666666"
-                android:textSize="14sp" />
-            <ImageView
-                android:id="@+id/bottom_bar_image_account"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:contentDescription="@null"
-                android:layout_above="@id/bottom_bar_text_account"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="3dp"
-                android:src="@drawable/index_1"/>
-        </RelativeLayout>
-        <RelativeLayout
             android:id="@+id/bottom_bar_assets_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -84,6 +56,64 @@
                 android:layout_marginTop="3dp" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/bottom_bar_account_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/bottom_bar_text_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/index"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/bottom_bar_image_account"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:contentDescription="@null"
+                android:layout_above="@id/bottom_bar_text_account"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/index_1"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_bar_budget_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/bottom_bar_text_budget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/index3"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+            <ImageView
+                android:id="@+id/bottom_bar_image_budget"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:contentDescription="@null"
+                android:layout_above="@id/bottom_bar_text_budget"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/index_3"
+                />
+        </RelativeLayout>
+        <RelativeLayout
             android:id="@+id/bottom_bar_myinfo_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -97,7 +127,7 @@
                 android:layout_marginBottom="3dp"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="@string/index3"
+                android:text="@string/index4"
                 android:textColor="#666666"
                 android:textSize="14sp"/>
             <ImageView

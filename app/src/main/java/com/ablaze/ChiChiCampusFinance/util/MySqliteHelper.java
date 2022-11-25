@@ -19,6 +19,9 @@ public class MySqliteHelper extends SQLiteOpenHelper {
         db.execSQL("create table tb_account (id integer primary key autoincrement," +
                 "accountMoney varchar(255),accountType varchar(255),payType varchar(255)," +
                 "assetsName varchar(255),time varchar(255),Remarks varchar(255),username varchar(255))");
+        db.execSQL("create table tb_budget (id integer primary key autoincrement," +
+                "budgetMoney varchar(255),accountType varchar(255)," +
+                "assetsName varchar(255),Remarks varchar(255),username varchar(255))");
     }
 
     // 升级数据库

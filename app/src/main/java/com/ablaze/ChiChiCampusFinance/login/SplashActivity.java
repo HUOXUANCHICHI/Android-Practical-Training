@@ -30,7 +30,8 @@ public class SplashActivity extends Activity {
             // 获取程序包信息
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);// getPackageManager()获取设备安装应用程序包对象
             // getPackageInfo：根据包名获取此处flag标签
-            tv_version.setText("V" + info.versionName);// 程序版本信息
+            String version = "V" + info.versionName;
+            tv_version.setText(version);// 程序版本信息
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             tv_version.setText("V");

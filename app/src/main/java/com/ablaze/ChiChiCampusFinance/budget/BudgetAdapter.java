@@ -1,4 +1,4 @@
-package com.ablaze.ChiChiCampusFinance.assets;
+package com.ablaze.ChiChiCampusFinance.budget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,15 @@ import android.widget.TextView;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.entity.Assets;
+import com.ablaze.ChiChiCampusFinance.entity.Budget;
 
 import java.util.List;
 
-public class AssetsAdapter extends BaseAdapter {
+public class BudgetAdapter extends BaseAdapter {
     Context context;
-    private final List<Assets> mData;
+    private final List<Budget> mData;
 
-    public AssetsAdapter(Context context, List<Assets> mData) {
+    public BudgetAdapter(Context context, List<Budget> mData) {
         this.context = context;
         this.mData = mData;
     }
@@ -53,7 +54,7 @@ public class AssetsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AssetsAdapter.ViewHolder holder = null;
+        BudgetAdapter.ViewHolder holder = null;
         if (convertView == null) {
             // 将布局转换成view对象的方法
             convertView = LayoutInflater.from(context).inflate(R.layout.item_infolist_lv, null);
@@ -64,33 +65,33 @@ public class AssetsAdapter extends BaseAdapter {
         }
         // 加载控件显示的内容
         // 获取集合指定位置的数据
-        final Assets assets = mData.get(position);
+        final Budget budget = mData.get(position);
 
         int picId = R.drawable.assets_other;
-        String as = assets.getAssetsType();
+        String as = budget.getAccountType();
         switch (as) {
-            case "现金":
-                picId = R.drawable.assets_cash;
+            case "饮食":
+                picId = R.drawable.acc_eat;
                 break;
-            case "银行卡":
-                picId = R.drawable.assets_bank_card;
+            case "工资":
+                picId = R.drawable.acc_salary;
                 break;
-            case "支付宝":
-                picId = R.drawable.assets_zfb;
+            case "交通":
+                picId = R.drawable.acc_traffic;
                 break;
-            case "微信":
-                picId = R.drawable.assets_wx;
+            case "医疗":
+                picId = R.drawable.acc_medicine;
                 break;
             case "其他":
-                picId = R.drawable.assets_other;
+                picId = R.drawable.acc_other;
                 break;
             default:
                 break;
         }
 
-        holder.tvTitle.setText(assets.getAssetsType() + " : " + assets.getAssetsName());
-        holder.tvTitle2.setText(String.valueOf(assets.getAssetsMoney()));
-        holder.tvTitle3.setText(assets.getRemarks());
+        holder.tvTitle.setText(budget.getAccountType() + " : " + budget.getAssetsName());
+        holder.tvTitle2.setText(String.valueOf(budget.getBudgetMoney()));
+        holder.tvTitle3.setText(budget.getRemarks());
         holder.iv.setImageResource(picId);
         return convertView;
 

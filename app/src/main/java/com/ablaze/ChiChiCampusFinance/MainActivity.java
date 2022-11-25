@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.ablaze.ChiChiCampusFinance.aboutme.MyInfoView;
 import com.ablaze.ChiChiCampusFinance.account.AccountInfoView;
 import com.ablaze.ChiChiCampusFinance.assets.AssetsInfoView;
+import com.ablaze.ChiChiCampusFinance.budget.BudgetInfoView;
 import com.ablaze.ChiChiCampusFinance.util.MySqliteHelper;
 import com.ablaze.ChiChiCampusFinance.R;
 
@@ -28,6 +29,7 @@ public class MainActivity extends Activity implements OnClickListener {
     // 视图
     private AccountInfoView mAccountInfoView;
     private AssetsInfoView mAssetsInfoView;
+    private BudgetInfoView mBudgetInfoView;
     private MyInfoView mMyInfoView;
 
     //顶部退出 背景
@@ -43,9 +45,9 @@ public class MainActivity extends Activity implements OnClickListener {
     public LinearLayout mBottomLayout;
 
     // 底部按钮控件
-    private View mAccountBtn, mAssetsBtn, mMyInfoBtn;
-    private TextView tv_account, tv_assets, tv_myInfo;
-    private ImageView iv_account, iv_assets, iv_myInfo;
+    private View mAssetsBtn, mAccountBtn, mBudgetBtn, mMyInfoBtn;
+    private TextView tv_assets, tv_account, tv_budget, tv_myInfo;
+    private ImageView iv_assets, iv_account, iv_budget, iv_myInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,14 +96,17 @@ public class MainActivity extends Activity implements OnClickListener {
      */
     private void initBottomBar() {
         mBottomLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
-        mAccountBtn = findViewById(R.id.bottom_bar_account_btn);
         mAssetsBtn = findViewById(R.id.bottom_bar_assets_btn);
+        mAccountBtn = findViewById(R.id.bottom_bar_account_btn);
+        mBudgetBtn = findViewById(R.id.bottom_bar_budget_btn);
         mMyInfoBtn = findViewById(R.id.bottom_bar_myinfo_btn);
-        tv_account = (TextView) findViewById(R.id.bottom_bar_text_account);
         tv_assets = (TextView) findViewById(R.id.bottom_bar_text_assets);
+        tv_account = (TextView) findViewById(R.id.bottom_bar_text_account);
+        tv_budget = (TextView) findViewById(R.id.bottom_bar_text_budget);
         tv_myInfo = (TextView) findViewById(R.id.bottom_bar_text_myinfo);
-        iv_account = (ImageView) findViewById(R.id.bottom_bar_image_account);
         iv_assets = (ImageView) findViewById(R.id.bottom_bar_image_assets);
+        iv_account = (ImageView) findViewById(R.id.bottom_bar_image_account);
+        iv_budget = (ImageView) findViewById(R.id.bottom_bar_image_budget);
         iv_myInfo = (ImageView) findViewById(R.id.bottom_bar_image_myinfo);
     }
 
@@ -127,11 +132,13 @@ public class MainActivity extends Activity implements OnClickListener {
      * 清除底部按钮的选中状态
      */
     private void clearBottomImageState() {
-        tv_account.setTextColor(Color.parseColor("#666666"));
         tv_assets.setTextColor(Color.parseColor("#666666"));
+        tv_account.setTextColor(Color.parseColor("#666666"));
+        tv_budget.setTextColor(Color.parseColor("#666666"));
         tv_myInfo.setTextColor(Color.parseColor("#666666"));
-        iv_account.setImageResource(R.drawable.index_1);
         iv_assets.setImageResource(R.drawable.index_2);
+        iv_account.setImageResource(R.drawable.index_1);
+        iv_budget.setImageResource(R.drawable.index_1);
         iv_myInfo.setImageResource(R.drawable.index_3);
         for (int i = 0; i < mBottomLayout.getChildCount(); i++) {
             mBottomLayout.getChildAt(i).setSelected(false);
@@ -145,20 +152,27 @@ public class MainActivity extends Activity implements OnClickListener {
     public void setSelectedStatus(int index) {
         switch (index) {
             case 0:
-                mAccountBtn.setSelected(true);
-                iv_account.setImageResource(R.drawable.index_1_lan);
-                tv_account.setTextColor(Color.parseColor("#0097F7"));
-                rl_title_bar.setVisibility(View.VISIBLE);
-                tv_main_title.setText("该月账单");
-                break;
-            case 1:
                 mAssetsBtn.setSelected(true);
                 iv_assets.setImageResource(R.drawable.index_2_lan);
                 tv_assets.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_title.setText("账户资产");
                 break;
+            case 1:
+                mAccountBtn.setSelected(true);
+                iv_account.setImageResource(R.drawable.index_1_lan);
+                tv_account.setTextColor(Color.parseColor("#0097F7"));
+                rl_title_bar.setVisibility(View.VISIBLE);
+                tv_main_title.setText("该月账单");
+                break;
             case 2:
+                mBudgetBtn.setSelected(true);
+                iv_budget.setImageResource(R.drawable.index_1_lan);
+                tv_budget.setTextColor(Color.parseColor("#0097F7"));
+                rl_title_bar.setVisibility(View.VISIBLE);
+                tv_main_title.setText("下月预算");
+                break;
+            case 3:
                 mMyInfoBtn.setSelected(true);
                 iv_myInfo.setImageResource(R.drawable.index_3_lan);
                 tv_myInfo.setTextColor(Color.parseColor("#0097F7"));
@@ -176,15 +190,6 @@ public class MainActivity extends Activity implements OnClickListener {
     private void createView(int viewIndex) {
         switch (viewIndex) {
             case 0:
-                // 记账界面
-                if (mAccountInfoView == null) {
-                    mAccountInfoView = new AccountInfoView(this);
-                    mBodyLayout.addView(mAccountInfoView.getView());
-                } else {
-                    mAccountInfoView.showView();
-                }
-                break;
-            case 1:
                 // 资产界面
                 if (mAssetsInfoView == null) {
                     mAssetsInfoView = new AssetsInfoView(this);
@@ -193,7 +198,25 @@ public class MainActivity extends Activity implements OnClickListener {
                     mAssetsInfoView.showView();
                 }
                 break;
+            case 1:
+                // 账单界面
+                if (mAccountInfoView == null) {
+                    mAccountInfoView = new AccountInfoView(this);
+                    mBodyLayout.addView(mAccountInfoView.getView());
+                } else {
+                    mAccountInfoView.showView();
+                }
+                break;
             case 2:
+                // 资产界面
+                if (mBudgetInfoView == null) {
+                    mBudgetInfoView = new BudgetInfoView(this);
+                    mBodyLayout.addView(mBudgetInfoView.getView());
+                } else {
+                    mBudgetInfoView.showView();
+                }
+                break;
+            case 3:
                 // 我的界面
                 if (mMyInfoView == null) {
                     mMyInfoView = new MyInfoView(this);
@@ -201,6 +224,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 } else {
                     mMyInfoView.showView();
                 }
+                break;
+            default:
                 break;
         }
     }
@@ -213,19 +238,23 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             // index1的点击事件
-            case R.id.bottom_bar_account_btn:
+            case R.id.bottom_bar_assets_btn:
                 clearBottomImageState();
                 selectDisplayView(0);
                 break;
             // index2的点击事件
-            case R.id.bottom_bar_assets_btn:
+            case R.id.bottom_bar_account_btn:
                 clearBottomImageState();
                 selectDisplayView(1);
+                break;
+            case R.id.bottom_bar_budget_btn:
+                clearBottomImageState();
+                selectDisplayView(2);
                 break;
             // 我的点击事件
             case R.id.bottom_bar_myinfo_btn:
                 clearBottomImageState();
-                selectDisplayView(2);
+                selectDisplayView(3);
                 break;
             default:
                 break;

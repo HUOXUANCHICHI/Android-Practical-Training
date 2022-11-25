@@ -56,7 +56,7 @@ public class AccountInfoView extends Activity {
         Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
         Log.i("该月收支-->支出", String.valueOf(payOut));
         sum = inCome + payOut;
-        Log.i("该月收支", "=" + inCome + "-" + payOut + "最终=" + sum);
+        Log.i("该月收支", "=" + inCome + "" + payOut + " 最终=" + sum);
         if (readLoginStatus()) {
             acc_money_sum.setText(String.valueOf(sum));
         } else {

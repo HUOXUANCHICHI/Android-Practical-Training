@@ -27,8 +27,7 @@ public class AssetsAddActivity extends Activity {
      */
     private Spinner sp_ass_type;
     private Button btn_ass_save;
-    private String etAssName = "", etAssRemarks = "", spAssType = "";
-    private String etAssMoney;
+    private String etAssName = "", spAssType = "", etAssMoney, etAssRemarks = "";
     private AssetsDao assetsDao = new AssetsDao(this);
 
     @Override
@@ -86,10 +85,10 @@ public class AssetsAddActivity extends Activity {
                 getEditString();
                 if (TextUtils.isEmpty(etAssName)) {
                     //资产名字为空
-                    Toast.makeText(AssetsAddActivity.this, "请输入账户名称", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AssetsAddActivity.this, "请输入资产名称", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(etAssMoney)) {
                     //资产金额为空
-                    Toast.makeText(AssetsAddActivity.this, "请输入账户金额", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AssetsAddActivity.this, "请输入资产金额", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(etAssRemarks)) {
                     Toast.makeText(AssetsAddActivity.this, "请输入备注", Toast.LENGTH_SHORT).show();
                 } else {

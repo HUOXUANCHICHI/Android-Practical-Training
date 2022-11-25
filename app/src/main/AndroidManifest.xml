@@ -15,16 +15,22 @@
         <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsAddActivity" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsList" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsDescActivity" />
+        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetAddActivity" />
+        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetList" />
+        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetDescActivity" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.SettingActivity" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.ModifyPwdActivity" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.MyInfoView" tools:ignore="Instantiatable"/>
         <activity android:name="com.ablaze.ChiChiCampusFinance.login.LoginActivity" />
         <activity android:name="com.ablaze.ChiChiCampusFinance.login.RegisterActivity" />
+        <!--当前Activity是否可以被另一个Application的组件启动,它的主要作用是：是否支持其它应用调用当前组件-->
         <activity 
         android:name="com.ablaze.ChiChiCampusFinance.login.SplashActivity"
         android:exported="true">
             <intent-filter>
+                <!--android.intent.action.MAIN决定应用程序最先启动的Activity-->
                 <action android:name="android.intent.action.MAIN" />
+                <!--android.intent.category.LAUNCHER决定应用程序是否显示在程序列表里-->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

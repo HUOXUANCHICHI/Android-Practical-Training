@@ -13,7 +13,8 @@
     <!--    主页导航栏-->
     <string name="index">账单</string>
     <string name="index2">资产</string>
-    <string name="index3">我的</string>
+    <string name="index3">预算</string>
+    <string name="index4">我的</string>
     <!--    我的导航栏-->
     <string name="tv_user_name">点击登录</string>
     <!--    设置的-->
@@ -28,4 +29,14 @@
     <string name="et_ass_name">请输入资产名称</string>
     <string name="et_ass_money">请输入账户余额</string>
     <string name="et_ass_remarks">备注</string>
+    <!--账单的-->
+    <string name="et_acc_money">请输入收支费用</string>
+    <string name="et_acc_remarks">备注</string>
+    <!--预算的-->
+    <string name="et_bud_name">请输入预消费名称</string>
+    <string name="et_bud_money">请输入预消费金额</string>
+    <string name="et_bud_remarks">备注</string>
+    <!--按钮-->
+    <string name="btn_del">删除</string>
+    <string name="btn_update">修改</string>
 </resources>

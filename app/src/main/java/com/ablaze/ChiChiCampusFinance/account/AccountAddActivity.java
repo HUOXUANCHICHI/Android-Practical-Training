@@ -40,7 +40,7 @@ public class AccountAddActivity extends Activity {
      */
     private Spinner spinner_acc_assName;
     private Button btn_acc_save;
-    private String etAccMoney = "", spAccType = "", spAccPayType = "", etAccRemarks = "", spAssName = "";
+    private String etAccMoney = "", spAccType = "", spAccPayType = "", spAccAssName = "", etAccRemarks = "";
     private AccountDao accountDao = new AccountDao(this);
     private AssetsDao assetsDao = new AssetsDao(this);
     /*List<Assets> allList;*/
@@ -100,7 +100,7 @@ public class AccountAddActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 拿到被选择项的值
-                spAssName = (String) spinner_acc_assName.getSelectedItem();
+                spAccAssName = (String) spinner_acc_assName.getSelectedItem();
             }
 
             @Override
@@ -165,10 +165,10 @@ public class AccountAddActivity extends Activity {
                         s = 0.0 - Double.parseDouble(etAccMoney);
                     }
                     //打印资产名称
-                    Toast.makeText(AccountAddActivity.this, spAssName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountAddActivity.this, spAccAssName, Toast.LENGTH_SHORT).show();
                     // boolean assets = assetsDao.findByAssName(spAssName,
                     // LoginActivity.getLoggingUsername());// 从资产获取资产名称下的多少钱
-                    Assets assets = assetsDao.findByAssName(spAssName,
+                    Assets assets = assetsDao.findByAssName(spAccAssName,
                             LoginActivity.getLoggingUsername());// 查询某类型资产的全部资产信息
                     if (assets != null) {
                         Double s1 = assets.getAssetsMoney() + s;// 资产的和这里的相加
@@ -176,7 +176,7 @@ public class AccountAddActivity extends Activity {
                                 s1,
                                 assets.getRemarks());
                     }
-                    accountDao.addAccount(s, spAccType, spAccPayType, spAssName,
+                    accountDao.addAccount(s, spAccType, spAccPayType, spAccAssName,
                             time,
                             etAccRemarks, LoginActivity.getLoggingUsername());
                     // double accountMoney,String accountType,String payType,String

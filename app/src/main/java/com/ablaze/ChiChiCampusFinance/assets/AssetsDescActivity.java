@@ -146,8 +146,8 @@ public class AssetsDescActivity extends Activity {
                                     assetsDao.updateAssets(id, etAssName, spAssType, etAssMoney, etAssRemarks);
                                     AssetsDescActivity.this.finish();
                                     // 重新启动详情页面
-                                    Intent intent = new Intent(AssetsDescActivity.this, AssetsList.class);
-                                    startActivity(intent);
+                                    /*Intent intent = new Intent(AssetsDescActivity.this, AssetsList.class);
+                                    startActivity(intent);*/
                                 }
                             }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                 @Override

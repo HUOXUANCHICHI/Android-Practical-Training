@@ -8,24 +8,24 @@
     <include layout="@layout/main_title_bar"/>
 
     <EditText
-        android:id="@+id/et_acc_desc_money"
+        android:id="@+id/et_bud_money"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="85dp"
         android:background="@drawable/shape_white_frame"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:hint="@string/et_acc_money"
-        android:inputType="text"
+        android:hint="@string/et_bud_money"
+        android:inputType="numberDecimal"
         android:paddingLeft="10dp"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
         android:textSize="20sp"/>
     <Spinner
-        android:id="@+id/spinner_acc_desc_type"
+        android:id="@+id/spinner_bud_type"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="15dp"
@@ -34,17 +34,16 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
     <Spinner
-        android:id="@+id/spinner_acc_desc_payType"
+        android:id="@+id/spinner_bud_assName"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="15dp"
-        android:entries="@array/acc_spinner_values"
+        android:entries="@array/assets_spinner_values"
         android:background="@drawable/shape_white_frame"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
-
     <EditText
-        android:id="@+id/et_acc_desc_remarks"
+        android:id="@+id/et_bud_remarks"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
@@ -54,42 +53,22 @@
         android:background="@drawable/shape_white_frame"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:hint="@string/et_acc_remarks"
+        android:hint="@string/et_bud_remarks"
         android:inputType="text"
         android:paddingLeft="10dp"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
         android:textSize="20sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="35dp"
-        >
-
     <Button
-        android:id="@+id/btn_acc_desc_del"
-        android:layout_width="0dp"
+        android:id="@+id/btn_bud_save"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/register_selector"
-        android:text="@string/btn_del"
-        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/btn_save"
+        android:textColor="@android:color/white"
         android:textSize="22sp"/>
-
-        <Button
-            android:id="@+id/btn_acc_desc_update"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:layout_marginRight="35dp"
-            android:background="@drawable/register_selector"
-            android:text="@string/btn_update"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"/>
-    </LinearLayout>
-
 </LinearLayout>

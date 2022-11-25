@@ -16,12 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:text="账户总资产"
+            android:text="预算总消费"
             android:textColor="@android:color/black"
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/tv_assets_moneySum"
+            android:id="@+id/tv_budget_moneySum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -45,7 +45,7 @@
         android:background="#E3E3E3"/>
 
     <RelativeLayout
-        android:id="@+id/btn_ass_list"
+        android:id="@+id/btn_bud_list"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#F7F8F8"
@@ -67,7 +67,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_toRightOf="@+id/iv_userinfo_icon"
-            android:text="查看资产详情"
+            android:text="查看预算账单"
             android:textColor="#515151"
             android:textSize="25sp"/>
         <ImageView
@@ -92,7 +92,7 @@
         android:background="#E3E3E3"/>
 
     <RelativeLayout
-        android:id="@+id/iv_toAddAss"
+        android:id="@+id/iv_toAddBud"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#F7F8F8"
@@ -114,7 +114,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_toRightOf="@+id/iv_userinfo_icon1"
-            android:text="添加个人资产"
+            android:text="添加预购物品"
             android:textColor="#515151"
             android:textSize="25sp"/>
         <ImageView
