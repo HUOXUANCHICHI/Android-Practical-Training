@@ -1,6 +1,7 @@
 package com.ablaze.ChiChiCampusFinance.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class FundAdapter extends BaseAdapter {
 
     /**
      * 决定了ListView列表展示的行数
+     *
      * @return ListView列表展示的行数
      */
     @Override
@@ -33,6 +35,7 @@ public class FundAdapter extends BaseAdapter {
 
     /**
      * 返回指定位置对应的数据
+     *
      * @param position
      * @return
      */
@@ -43,6 +46,7 @@ public class FundAdapter extends BaseAdapter {
 
     /**
      * 返回指定位置所对应的id
+     *
      * @param position
      * @return
      */
@@ -72,6 +76,11 @@ public class FundAdapter extends BaseAdapter {
         holder.tvTitle.setText(fund.getFundName());
         holder.tvTitle2.setText(fund.getRate());
         holder.tvTitle3.setText(fund.getJoined());
+        if ("已购买".equals(fund.getJoined())) {
+            holder.tvTitle3.setTextColor(Color.RED);
+        } else if ("未购买".equals(fund.getJoined())) {
+            holder.tvTitle3.setTextColor(Color.BLUE);
+        }
         holder.iv.setImageResource(picId);
         return convertView;
 

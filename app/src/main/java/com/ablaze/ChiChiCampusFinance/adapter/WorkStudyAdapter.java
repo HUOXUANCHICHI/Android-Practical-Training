@@ -1,6 +1,7 @@
 package com.ablaze.ChiChiCampusFinance.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,6 +96,7 @@ public class WorkStudyAdapter extends BaseAdapter {
         holder.tvTitle.setText(workStudy.getWorkName());
         holder.tvTitle2.setText(workStudy.getPlace());
         holder.tvTitle3.setText(workStudy.getDailySalary() + "/天");
+        holder.tvTitle3.setTextColor(Color.MAGENTA);
         holder.iv.setImageResource(picId);
         return convertView;
 
