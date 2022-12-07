@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.assets.AssetsList">
+    tools:context=".ui.fund.FundList">
 
     <include layout="@layout/main_title_bar"/>
 
     <ListView
-        android:id="@+id/ass_infoList_lv"
+        android:id="@+id/fund_infoList_lv"
         android:divider="#ffffff"
         android:dividerHeight="3dp"
         android:layout_width="match_parent"

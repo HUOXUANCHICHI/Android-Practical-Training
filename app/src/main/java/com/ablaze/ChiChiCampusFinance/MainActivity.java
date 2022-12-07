@@ -17,12 +17,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ablaze.ChiChiCampusFinance.aboutme.MyInfoView;
-import com.ablaze.ChiChiCampusFinance.account.AccountInfoView;
-import com.ablaze.ChiChiCampusFinance.assets.AssetsInfoView;
-import com.ablaze.ChiChiCampusFinance.budget.BudgetInfoView;
+import com.ablaze.ChiChiCampusFinance.ui.aboutme.MyInfoView;
+import com.ablaze.ChiChiCampusFinance.ui.account.AccountInfoView;
+import com.ablaze.ChiChiCampusFinance.ui.assets.AssetsInfoView;
+import com.ablaze.ChiChiCampusFinance.ui.budget.BudgetInfoView;
 import com.ablaze.ChiChiCampusFinance.util.MySqliteHelper;
-import com.ablaze.ChiChiCampusFinance.R;
 
 public class MainActivity extends Activity implements OnClickListener {
 

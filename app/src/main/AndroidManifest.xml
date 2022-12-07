@@ -9,23 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
-        <activity android:name="com.ablaze.ChiChiCampusFinance.account.AccountAddActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.account.AccountList" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.account.AccountDescActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsAddActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsList" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.assets.AssetsDescActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetAddActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetList" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.budget.BudgetDescActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.SettingActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.ModifyPwdActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.aboutme.MyInfoView" tools:ignore="Instantiatable"/>
-        <activity android:name="com.ablaze.ChiChiCampusFinance.login.LoginActivity" />
-        <activity android:name="com.ablaze.ChiChiCampusFinance.login.RegisterActivity" />
+        <activity android:name=".ui.account.AccountAddActivity" />
+        <activity android:name=".ui.account.AccountList" />
+        <activity android:name=".ui.account.AccountDescActivity" />
+        <activity android:name=".ui.assets.AssetsAddActivity" />
+        <activity android:name=".ui.assets.AssetsList" />
+        <activity android:name=".ui.assets.AssetsDescActivity" />
+        <activity android:name=".ui.budget.BudgetAddActivity" />
+        <activity android:name=".ui.budget.BudgetList" />
+        <activity android:name=".ui.budget.BudgetDescActivity" />
+        <activity android:name=".ui.fund.FundList" />
+        <activity android:name=".ui.fund.FundDescActivity" />
+        <activity android:name=".ui.aboutme.SettingActivity" />
+        <activity android:name=".ui.aboutme.ModifyPwdActivity" />
+        <activity android:name=".ui.aboutme.MyInfoView" tools:ignore="Instantiatable"/>
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
         <!--当前Activity是否可以被另一个Application的组件启动,它的主要作用是：是否支持其它应用调用当前组件-->
         <activity 
-        android:name="com.ablaze.ChiChiCampusFinance.login.SplashActivity"
+        android:name=".ui.login.SplashActivity"
         android:exported="true">
             <intent-filter>
                 <!--android.intent.action.MAIN决定应用程序最先启动的Activity-->

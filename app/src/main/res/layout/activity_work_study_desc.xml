@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
+
+    <include layout="@layout/main_title_bar" />
+
+    <TextView
+        android:id="@+id/tv_work_study_desc_workName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/shape_white_frame"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/tv_work_study_name"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#a3a3a3"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/tv_work_study_desc_dailySalary"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/shape_white_frame"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/tv_work_study_dailySalary"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#a3a3a3"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_work_study_desc_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/shape_white_frame"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/tv_work_study_telephone"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#a3a3a3"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_work_study_desc_place"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/shape_white_frame"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/tv_work_study_place"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#a3a3a3"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_work_study_desc_remarks"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/shape_white_frame"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/tv_work_study_remarks"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#a3a3a3"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:onClick="call1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/btn_border"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_call"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:lines="2"
+                android:textSize="28dp"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/tv_work_study_contact_us"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,13 +3,9 @@ package com.ablaze.ChiChiCampusFinance.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
 import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
 import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
-import com.ablaze.ChiChiCampusFinance.entity.Account;
-import com.ablaze.ChiChiCampusFinance.login.LoginActivity;
-
-import java.util.List;
+import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 /**
  * @author ablaze 分析工具

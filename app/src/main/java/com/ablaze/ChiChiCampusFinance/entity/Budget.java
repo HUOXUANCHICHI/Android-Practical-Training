@@ -35,6 +35,17 @@ public class Budget implements Serializable {
         Remarks = remarks;
     }
 
+    @Override
+    public String toString() {
+        return "Budget{" +
+                "id=" + id +
+                ", budgetMoney=" + budgetMoney +
+                ", accountType='" + accountType + '\'' +
+                ", assetsName='" + assetsName + '\'' +
+                ", Remarks='" + Remarks + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
