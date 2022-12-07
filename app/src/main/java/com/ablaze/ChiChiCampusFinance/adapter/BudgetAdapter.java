@@ -1,4 +1,4 @@
-package com.ablaze.ChiChiCampusFinance.ui.account;
+package com.ablaze.ChiChiCampusFinance.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ablaze.ChiChiCampusFinance.R;
-import com.ablaze.ChiChiCampusFinance.entity.Account;
+import com.ablaze.ChiChiCampusFinance.entity.Budget;
 
 import java.util.List;
 
-public class AccountAdapter extends BaseAdapter {
+public class BudgetAdapter extends BaseAdapter {
     Context context;
-    private final List<Account> mData;
+    private final List<Budget> mData;
 
-    public AccountAdapter(Context context, List<Account> mData) {
+    public BudgetAdapter(Context context, List<Budget> mData) {
         this.context = context;
         this.mData = mData;
     }
@@ -53,21 +53,21 @@ public class AccountAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AccountAdapter.ViewHolder holder = null;
+        BudgetAdapter.ViewHolder holder = null;
         if (convertView == null) {
             // 将布局转换成view对象的方法
             convertView = LayoutInflater.from(context).inflate(R.layout.item_infolist_lv, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (AccountAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
         // 加载控件显示的内容
         // 获取集合指定位置的数据
-        final Account account = mData.get(position);
+        final Budget budget = mData.get(position);
 
-        int picId = R.drawable.acc_other;
-        String as = account.getAccountType();
+        int picId = R.drawable.assets_other;
+        String as = budget.getAccountType();
         switch (as) {
             case "饮食":
                 picId = R.drawable.acc_eat;
@@ -88,10 +88,9 @@ public class AccountAdapter extends BaseAdapter {
                 break;
         }
 
-        holder.tvTitle.setText(account.getAssetsName());
-        holder.tvTitle2.setText(String.valueOf(account.getAccountMoney()));
-        holder.tvTitle3.setText(account.getRemarks());
-        holder.time.setText(account.getTime());
+        holder.tvTitle.setText(budget.getAccountType() + " : " + budget.getAssetsName());
+        holder.tvTitle2.setText(String.valueOf(budget.getBudgetMoney()));
+        holder.tvTitle3.setText(budget.getRemarks());
         holder.iv.setImageResource(picId);
         return convertView;
 
@@ -107,6 +106,9 @@ public class AccountAdapter extends BaseAdapter {
             tvTitle2 = view.findViewById(R.id.item_info_tv_title2);
             tvTitle3 = view.findViewById(R.id.item_info_tv_title3);
             time = view.findViewById(R.id.item_info_tv_time);
+            // 隐藏time组件
+            time.setVisibility(View.GONE);
         }
     }
+
 }

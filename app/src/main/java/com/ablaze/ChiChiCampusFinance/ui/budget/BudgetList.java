@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ablaze.ChiChiCampusFinance.R;
+import com.ablaze.ChiChiCampusFinance.adapter.BudgetAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
 import com.ablaze.ChiChiCampusFinance.entity.Budget;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
@@ -57,7 +58,7 @@ public class BudgetList extends Activity {
         rl_title_bar.setBackgroundColor(Color.parseColor("#78A4FA"));
         tv_back = (TextView) findViewById(R.id.tv_back);
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
-        tv_main_title.setText("预算详情");
+        tv_main_title.setText("预算列表");
 
         //列表
         showLv = findViewById(R.id.ass_infoList_lv);

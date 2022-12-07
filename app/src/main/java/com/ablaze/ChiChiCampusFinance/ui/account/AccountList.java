@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ablaze.ChiChiCampusFinance.R;
+import com.ablaze.ChiChiCampusFinance.adapter.AccountAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
 import com.ablaze.ChiChiCampusFinance.entity.Account;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
@@ -54,7 +55,7 @@ public class AccountList extends Activity {
         rl_title_bar.setBackgroundColor(Color.parseColor("#78A4FA"));
         tv_back = (TextView) findViewById(R.id.tv_back);
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
-        tv_main_title.setText("收支详情");
+        tv_main_title.setText("收支列表");
 
         //列表
         showLv = findViewById(R.id.acc_infoList_lv);

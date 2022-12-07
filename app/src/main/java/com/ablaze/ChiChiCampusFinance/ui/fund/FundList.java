@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ablaze.ChiChiCampusFinance.R;
+import com.ablaze.ChiChiCampusFinance.adapter.FundAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.FundDao;
 import com.ablaze.ChiChiCampusFinance.entity.Fund;
 

@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.ablaze.ChiChiCampusFinance">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/third"
@@ -20,6 +26,8 @@
         <activity android:name=".ui.budget.BudgetDescActivity" />
         <activity android:name=".ui.fund.FundList" />
         <activity android:name=".ui.fund.FundDescActivity" />
+        <activity android:name=".ui.workstudy.WorkStudyList" />
+        <activity android:name=".ui.workstudy.WorkStudyDescActivity" />
         <activity android:name=".ui.aboutme.SettingActivity" />
         <activity android:name=".ui.aboutme.ModifyPwdActivity" />
         <activity android:name=".ui.aboutme.MyInfoView" tools:ignore="Instantiatable"/>

@@ -1,4 +1,4 @@
-package com.ablaze.ChiChiCampusFinance.ui.fund;
+package com.ablaze.ChiChiCampusFinance.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

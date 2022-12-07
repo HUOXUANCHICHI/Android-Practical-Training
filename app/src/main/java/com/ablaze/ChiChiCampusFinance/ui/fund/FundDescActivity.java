@@ -6,21 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
-import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
 import com.ablaze.ChiChiCampusFinance.dao.FundDao;
-import com.ablaze.ChiChiCampusFinance.entity.Budget;
 import com.ablaze.ChiChiCampusFinance.entity.Fund;
 
 public class FundDescActivity extends Activity {
@@ -31,7 +24,7 @@ public class FundDescActivity extends Activity {
     TextView tv_fund_desc_fundName, tv_fund_desc_rate, tv_fund_desc_joined, tv_bud_desc_remarks;
 
     Button btn_fund_desc_buy, btn_fund_desc_reset;
-    private String tvFundFundName = "", tvFundRate, tvFundJoined = "", tvFundRemarks = "";
+    private String tvFundName = "", tvFundRate, tvFundJoined = "", tvFundRemarks = "";
     int id;
     private final FundDao fundDao = new FundDao(this);
 
@@ -39,7 +32,7 @@ public class FundDescActivity extends Activity {
      * 获取控件上的字符串
      */
     private void getEditString() {
-        tvFundFundName = tv_fund_desc_fundName.getText().toString().trim();
+        tvFundName = tv_fund_desc_fundName.getText().toString().trim();
         tvFundRate = tv_fund_desc_rate.getText().toString().trim();
         tvFundJoined = tv_fund_desc_joined.getText().toString().trim();
         tvFundRemarks = tv_bud_desc_remarks.getText().toString().trim();

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.ui.fund.FundList;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
+import com.ablaze.ChiChiCampusFinance.ui.workstudy.WorkStudyList;
 import com.ablaze.ChiChiCampusFinance.util.AnalysisUtils;
 
 public class MyInfoView {
@@ -109,7 +110,7 @@ public class MyInfoView {
             public void onClick(View v) {
                 if (readLoginStatus()) {
                     // 跳转到设置界面
-                    Intent intent = new Intent(mContext, SettingActivity.class);
+                    Intent intent = new Intent(mContext, WorkStudyList.class);
                     mContext.startActivityForResult(intent, 1);
 
                 } else {
