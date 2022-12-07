@@ -135,10 +135,10 @@ public class MainActivity extends Activity implements OnClickListener {
         tv_account.setTextColor(Color.parseColor("#666666"));
         tv_budget.setTextColor(Color.parseColor("#666666"));
         tv_myInfo.setTextColor(Color.parseColor("#666666"));
-        iv_assets.setImageResource(R.drawable.index_2);
-        iv_account.setImageResource(R.drawable.index_1);
-        iv_budget.setImageResource(R.drawable.index_1);
-        iv_myInfo.setImageResource(R.drawable.index_3);
+        iv_assets.setImageResource(R.drawable.assets);
+        iv_account.setImageResource(R.drawable.account);
+        iv_budget.setImageResource(R.drawable.budget);
+        iv_myInfo.setImageResource(R.drawable.my);
         for (int i = 0; i < mBottomLayout.getChildCount(); i++) {
             mBottomLayout.getChildAt(i).setSelected(false);
         }
@@ -152,28 +152,28 @@ public class MainActivity extends Activity implements OnClickListener {
         switch (index) {
             case 0:
                 mAssetsBtn.setSelected(true);
-                iv_assets.setImageResource(R.drawable.index_2_lan);
+                iv_assets.setImageResource(R.drawable.assets_lan);
                 tv_assets.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_title.setText("账户资产");
                 break;
             case 1:
                 mAccountBtn.setSelected(true);
-                iv_account.setImageResource(R.drawable.index_1_lan);
+                iv_account.setImageResource(R.drawable.account_lan);
                 tv_account.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_title.setText("该月账单");
                 break;
             case 2:
                 mBudgetBtn.setSelected(true);
-                iv_budget.setImageResource(R.drawable.index_1_lan);
+                iv_budget.setImageResource(R.drawable.budget_lan);
                 tv_budget.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_title.setText("下月预算");
                 break;
             case 3:
                 mMyInfoBtn.setSelected(true);
-                iv_myInfo.setImageResource(R.drawable.index_3_lan);
+                iv_myInfo.setImageResource(R.drawable.my_lan);
                 tv_myInfo.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.GONE);
                 break;

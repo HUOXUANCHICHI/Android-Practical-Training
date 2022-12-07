@@ -66,7 +66,30 @@ public class WorkStudyAdapter extends BaseAdapter {
         // 获取集合指定位置的数据
         final WorkStudy workStudy = mData.get(position);
 
-        int picId = R.drawable.assets_other;
+        int picId = R.drawable.work_studylist;
+        String as = workStudy.getPlace();
+        switch (as) {
+            case "乐学餐厅":
+                picId = R.drawable.place1;
+                break;
+            case "二食堂":
+                picId = R.drawable.place2;
+                break;
+            case "东苑食堂":
+                picId = R.drawable.place3;
+                break;
+            case "信息楼2楼":
+                picId = R.drawable.place4;
+                break;
+            case "西苑餐厅":
+                picId = R.drawable.place5;
+                break;
+            case "枫叶餐厅":
+                picId = R.drawable.place6;
+                break;
+            default:
+                break;
+        }
 
 
         holder.tvTitle.setText(workStudy.getWorkName());

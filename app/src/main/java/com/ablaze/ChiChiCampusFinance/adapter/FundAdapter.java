@@ -66,7 +66,7 @@ public class FundAdapter extends BaseAdapter {
         // 获取集合指定位置的数据
         final Fund fund = mData.get(position);
 
-        int picId = R.drawable.assets_other;
+        int picId = R.drawable.fundlist;
 
 
         holder.tvTitle.setText(fund.getFundName());
