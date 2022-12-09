@@ -5,9 +5,9 @@ import android.util.Log;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
 import com.ablaze.ChiChiCampusFinance.util.MySqliteHelper;
-import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +22,13 @@ public class AssetsDaoTest {
         helper.getWritableDatabase();
     }
 
-    private AssetsDao assetsDao;
-    private AccountDao accountDao;
+    private AssetsDaoImpl assetsDao;
+    private AccountDaoImpl accountDao;
 
     @Before
     public void init() {
-        assetsDao = new AssetsDao(InstrumentationRegistry.getInstrumentation().getTargetContext());
-        accountDao = new AccountDao(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        assetsDao = new AssetsDaoImpl(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        accountDao = new AccountDaoImpl(InstrumentationRegistry.getInstrumentation().getTargetContext());
     }
 
     /*@Test

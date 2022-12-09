@@ -3,8 +3,8 @@ package com.ablaze.ChiChiCampusFinance.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
-import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
+import com.ablaze.ChiChiCampusFinance.dao.impl.BudgetDaoImpl;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 /**
@@ -25,7 +25,7 @@ public class AnalysisUtils {
      * @return
      */
     public static Double showAssSum(Context context) {
-        AssetsDao dao = new AssetsDao(context);
+        AssetsDaoImpl dao = new AssetsDaoImpl(context);
         return dao.findAssSumAll(LoginActivity.getLoggingUsername());
     }
 
@@ -35,7 +35,7 @@ public class AnalysisUtils {
      * @return
      */
     public static Double showBudSum(Context context) {
-        BudgetDao dao = new BudgetDao(context);
+        BudgetDaoImpl dao = new BudgetDaoImpl(context);
         return dao.findBudSumAll(LoginActivity.getLoggingUsername());
     }
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.adapter.AccountAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Account;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
@@ -29,7 +30,7 @@ public class AccountList extends Activity {
     ListView showLv;
     List<Account> mData;
     List<Account> allList;
-    AccountDao dao = new AccountDao(this);
+    AccountDao dao = new AccountDaoImpl(this);
 
     private AccountAdapter adapter;
 

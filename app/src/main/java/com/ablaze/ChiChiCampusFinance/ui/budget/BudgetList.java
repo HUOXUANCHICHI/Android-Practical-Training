@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.adapter.BudgetAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.BudgetDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Budget;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
@@ -32,7 +33,7 @@ public class BudgetList extends Activity {
     ListView showLv;
     List<Budget> mData;
     List<Budget> allList;
-    BudgetDao dao = new BudgetDao(this);
+    BudgetDao dao = new BudgetDaoImpl(this);
 
     private BudgetAdapter adapter;
 

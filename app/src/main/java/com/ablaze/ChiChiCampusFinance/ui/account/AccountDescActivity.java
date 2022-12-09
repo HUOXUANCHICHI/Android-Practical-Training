@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
 import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Account;
 import com.ablaze.ChiChiCampusFinance.entity.Assets;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
@@ -41,8 +43,8 @@ public class AccountDescActivity extends Activity {
     Button btn_acc_desc_del, btn_acc_desc_update;
     private String etAccMoney = "", spAccType = "", spAccPayType = "", etAccRemarks = "";
     int id;
-    private final AccountDao accountDao = new AccountDao(this);
-    private AssetsDao assetsDao = new AssetsDao(this);
+    private final AccountDao accountDao = new AccountDaoImpl(this);
+    private AssetsDao assetsDao = new AssetsDaoImpl(this);
 
     /**
      * 获取控件上的字符串

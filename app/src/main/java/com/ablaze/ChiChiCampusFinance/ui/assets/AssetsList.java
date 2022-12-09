@@ -1,11 +1,5 @@
 package com.ablaze.ChiChiCampusFinance.ui.assets;
 
-import com.ablaze.ChiChiCampusFinance.R;
-import com.ablaze.ChiChiCampusFinance.adapter.AssetsAdapter;
-import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
-import com.ablaze.ChiChiCampusFinance.entity.Assets;
-import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.ablaze.ChiChiCampusFinance.R;
+import com.ablaze.ChiChiCampusFinance.adapter.AssetsAdapter;
+import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
+import com.ablaze.ChiChiCampusFinance.entity.Assets;
+import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class AssetsList extends Activity {
     ListView showLv;
     List<Assets> mData;
     List<Assets> allList;
-    AssetsDao dao = new AssetsDao(this);
+    AssetsDao dao = new AssetsDaoImpl(this);
 
     private AssetsAdapter adapter;
 

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.FundDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.FundDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Fund;
 
 public class FundDescActivity extends Activity {
@@ -26,7 +27,7 @@ public class FundDescActivity extends Activity {
     Button btn_fund_desc_buy, btn_fund_desc_reset;
     private String tvFundName = "", tvFundRate, tvFundJoined = "", tvFundRemarks = "";
     int id;
-    private final FundDao fundDao = new FundDao(this);
+    private final FundDao fundDao = new FundDaoImpl(this);
 
     /**
      * 获取控件上的字符串

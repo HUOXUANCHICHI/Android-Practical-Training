@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
-import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 public class AccountInfoView extends Activity {
@@ -50,7 +50,7 @@ public class AccountInfoView extends Activity {
 
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
         // 该月收支
-        AccountDao accountDao = new AccountDao(mContext);
+        AccountDaoImpl accountDao = new AccountDaoImpl(mContext);
         Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
         Log.i("该月收支-->收入", String.valueOf(inCome));
         Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
@@ -106,7 +106,7 @@ public class AccountInfoView extends Activity {
         mCurrentView.setVisibility(View.VISIBLE);
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
         // 该月收支
-        AccountDao accountDao = new AccountDao(mContext);
+        AccountDaoImpl accountDao = new AccountDaoImpl(mContext);
         Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
         Log.i("该月收支-->收入", String.valueOf(inCome));
         Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());

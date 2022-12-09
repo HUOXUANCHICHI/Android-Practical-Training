@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.adapter.WorkStudyAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.WorkStudyDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.WorkStudyDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.WorkStudy;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class WorkStudyList extends Activity {
     ListView showLv;
     List<WorkStudy> mData;
     List<WorkStudy> allList;
-    WorkStudyDao dao = new WorkStudyDao(this);
+    WorkStudyDao dao = new WorkStudyDaoImpl(this);
 
     private WorkStudyAdapter adapter;
 

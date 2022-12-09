@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Assets;
 
 public class AssetsDescActivity extends Activity {
@@ -35,7 +36,7 @@ public class AssetsDescActivity extends Activity {
     private String etAssName = "", etAssRemarks = "", spAssType = "";
     private Double etAssMoney = 0.00;
     int id;
-    private final AssetsDao assetsDao = new AssetsDao(this);
+    private final AssetsDao assetsDao = new AssetsDaoImpl(this);
 
     /**
      * 获取控件上的字符串

@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.AccountDao;
 import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Assets;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
@@ -41,8 +43,8 @@ public class AccountAddActivity extends Activity {
     private Spinner spinner_acc_assName;
     private Button btn_acc_save;
     private String etAccMoney = "", spAccType = "", spAccPayType = "", spAccAssName = "", etAccRemarks = "";
-    private AccountDao accountDao = new AccountDao(this);
-    private AssetsDao assetsDao = new AssetsDao(this);
+    private AccountDao accountDao = new AccountDaoImpl(this);
+    private AssetsDao assetsDao = new AssetsDaoImpl(this);
     /*List<Assets> allList;*/
     /*private ArrayAdapter<String> arr_adapter;
     private ArrayAdapter<CharSequence> spinner_acc_assName_List;*/

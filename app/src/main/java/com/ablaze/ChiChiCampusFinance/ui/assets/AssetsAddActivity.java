@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.AssetsDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.AssetsDaoImpl;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 public class AssetsAddActivity extends Activity {
@@ -28,7 +29,7 @@ public class AssetsAddActivity extends Activity {
     private Spinner sp_ass_type;
     private Button btn_ass_save;
     private String etAssName = "", spAssType = "", etAssMoney, etAssRemarks = "";
-    private AssetsDao assetsDao = new AssetsDao(this);
+    private AssetsDao assetsDao = new AssetsDaoImpl(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

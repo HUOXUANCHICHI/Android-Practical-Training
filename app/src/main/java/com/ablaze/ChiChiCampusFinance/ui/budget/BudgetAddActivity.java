@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.BudgetDaoImpl;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
 public class BudgetAddActivity extends Activity {
@@ -32,7 +33,7 @@ public class BudgetAddActivity extends Activity {
     private Spinner sp_bud_assName;
     private Button btn_bud_save;
     private String etBudMoney, spBudAccType = "", spBudAssName, etBudRemarks = "";
-    private BudgetDao budgetDao = new BudgetDao(this);
+    private BudgetDao budgetDao = new BudgetDaoImpl(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

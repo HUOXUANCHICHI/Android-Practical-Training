@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.adapter.FundAdapter;
 import com.ablaze.ChiChiCampusFinance.dao.FundDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.FundDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Fund;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class FundList extends Activity {
     ListView showLv;
     List<Fund> mData;
     List<Fund> allList;
-    FundDao dao = new FundDao(this);
+    FundDao dao = new FundDaoImpl(this);
 
     private FundAdapter adapter;
 

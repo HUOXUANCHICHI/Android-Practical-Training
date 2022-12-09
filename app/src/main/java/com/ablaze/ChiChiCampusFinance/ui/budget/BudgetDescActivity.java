@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.BudgetDao;
+import com.ablaze.ChiChiCampusFinance.dao.impl.BudgetDaoImpl;
 import com.ablaze.ChiChiCampusFinance.entity.Budget;
 
 public class BudgetDescActivity extends Activity {
@@ -39,7 +40,7 @@ public class BudgetDescActivity extends Activity {
     private Double etBudMoney = 0.0;
     private String spBudAccType = "", spBudAssName, etBudRemarks = "";
     int id;
-    private final BudgetDao budgetDao = new BudgetDao(this);
+    private final BudgetDao budgetDao = new BudgetDaoImpl(this);
 
     /**
      * 获取控件上的字符串
