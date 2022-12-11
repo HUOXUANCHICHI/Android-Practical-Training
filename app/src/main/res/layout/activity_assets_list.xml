@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.assets.AssetsList">
+    tools:context=".ui.assets.AssetsListActivity">
 
     <include layout="@layout/main_title_bar"/>
 

@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * 账户加载信息页
  */
-public class FundList extends Activity {
+public class FundListActivity extends Activity {
 
     private TextView tv_main_title, tv_back;
     private RelativeLayout rl_title_bar;
@@ -66,7 +66,7 @@ public class FundList extends Activity {
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FundList.this.finish();
+                FundListActivity.this.finish();
             }
         });
     }
@@ -77,7 +77,7 @@ public class FundList extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //将信息传递给详情页面
                 Fund fundBean = mData.get(position);
-                Intent intent = new Intent(FundList.this, FundDescActivity.class);
+                Intent intent = new Intent(FundListActivity.this, FundDescActivity.class);
                 intent.putExtra("fund", fundBean);
                 startActivity(intent);
             }

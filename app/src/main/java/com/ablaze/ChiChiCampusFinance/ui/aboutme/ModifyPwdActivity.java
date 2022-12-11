@@ -90,20 +90,27 @@ public class ModifyPwdActivity extends Activity {
             public void onClick(View v) {
                 getEditString();
                 if (TextUtils.isEmpty(originalPsw)) {
+                    //输入框输入的原始密码为空
                     Toast.makeText(ModifyPwdActivity.this, "请输入原始密码", Toast.LENGTH_SHORT).show();
                     // 当点击“保存”按钮时需要验证保存密码是否正确
-                } else if (!MD5Utils.MD5(originalPsw).equals(readPsw())) {
-                    Toast.makeText(ModifyPwdActivity.this, "输入的密码与原始密码不一致", Toast.LENGTH_SHORT).show();
-                } else if (MD5Utils.MD5(newPsw).equals(readPsw())) {
-                    Toast.makeText(ModifyPwdActivity.this, "输入的新密码与原始密码不能一致", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(newPsw)) {
+                    //输入的“新密码"为空
                     Toast.makeText(ModifyPwdActivity.this, "请输入新密码", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(newPswAgain)) {
+                    //输入的“确认密码"为空
                     Toast.makeText(ModifyPwdActivity.this, "请再次输入新密码", Toast.LENGTH_SHORT).show();
                     // 验证新输入的密码是否相同
+                } else if (!MD5Utils.MD5(originalPsw).equals(readPsw())) {
+                    //输入的”原始密码“与旧密码不一致
+                    Toast.makeText(ModifyPwdActivity.this, "输入的原始密码与旧密码不一致", Toast.LENGTH_SHORT).show();
+                } else if (MD5Utils.MD5(newPsw).equals(readPsw())) {
+                    //输入的“新密码”与旧密码一致
+                    Toast.makeText(ModifyPwdActivity.this, "输入的新密码与旧密码不能一致", Toast.LENGTH_SHORT).show();
                 } else if (!newPsw.equals(newPswAgain)) {
+                    //输入的“密码”与“确认密码”不相同
                     Toast.makeText(ModifyPwdActivity.this, "两次输入的新密码不一致", Toast.LENGTH_SHORT).show();
                 } else {
+                    //修改密码成功
                     Toast.makeText(ModifyPwdActivity.this, "新密码设置成功", Toast.LENGTH_SHORT).show();
                     // 修改登录成功时保存在SharedPreferences中的密码
                     modifyPsw(newPsw);

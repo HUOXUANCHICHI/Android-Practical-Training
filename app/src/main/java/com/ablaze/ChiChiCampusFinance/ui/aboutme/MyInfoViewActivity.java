@@ -13,12 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ablaze.ChiChiCampusFinance.R;
-import com.ablaze.ChiChiCampusFinance.ui.fund.FundList;
+import com.ablaze.ChiChiCampusFinance.ui.fund.FundListActivity;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
-import com.ablaze.ChiChiCampusFinance.ui.workstudy.WorkStudyList;
+import com.ablaze.ChiChiCampusFinance.ui.workstudy.WorkStudyListActivity;
 import com.ablaze.ChiChiCampusFinance.util.AnalysisUtils;
 
-public class MyInfoView {
+public class MyInfoViewActivity {
 
     //顶部控件
     private LinearLayout ll_head;//头像及背景的部分
@@ -36,7 +36,7 @@ public class MyInfoView {
      * 为以后将Layout转换为view时用 创建视图时使用
      * @param context
      */
-    public MyInfoView(Activity context) {
+    public MyInfoViewActivity(Activity context) {
         mContext = context;
         // 为以后将Layout转换为view时用
         mInflater = LayoutInflater.from(mContext);
@@ -97,7 +97,7 @@ public class MyInfoView {
             public void onClick(View v) {
                 if (readLoginStatus()) {
                     // 跳转到设置界面
-                    Intent intent = new Intent(mContext, FundList.class);
+                    Intent intent = new Intent(mContext, FundListActivity.class);
                     mContext.startActivityForResult(intent, 1);
 
                 } else {
@@ -110,7 +110,7 @@ public class MyInfoView {
             public void onClick(View v) {
                 if (readLoginStatus()) {
                     // 跳转到设置界面
-                    Intent intent = new Intent(mContext, WorkStudyList.class);
+                    Intent intent = new Intent(mContext, WorkStudyListActivity.class);
                     mContext.startActivityForResult(intent, 1);
 
                 } else {

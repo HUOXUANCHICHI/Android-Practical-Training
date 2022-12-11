@@ -140,7 +140,7 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "登录成功：欢迎 " + username, Toast.LENGTH_SHORT).show();
                 } else if ((!TextUtils.isEmpty(spPwd) && !md5Pwd.equals(spPwd))) {
                     //数据库中密码不为空 且 加密后的输入密码不等于数据库密码
-                    Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
                 } else {
                     //用户不存在
                     Toast.makeText(LoginActivity.this, "此用户不存在", Toast.LENGTH_SHORT).show();
@@ -235,7 +235,8 @@ public class LoginActivity extends Activity {
                     editor.putString(PWD, et_pwd.getText().toString());
                     // 记录记住密码的状态，下次读取
                     editor.putBoolean(IS_CHECKED, isChecked);
-                    Toast.makeText(LoginActivity.this, "已记住密码：" + isChecked, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "已记住密码", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "已记住密码：" + isChecked, Toast.LENGTH_SHORT).show();
                     // 提交
                     editor.commit();
                 } else {
@@ -246,7 +247,8 @@ public class LoginActivity extends Activity {
                     editor.putString(PWD, null);
                     // 记录记住密码的状态，下次读取
                     editor.putBoolean(IS_CHECKED, isChecked);
-                    Toast.makeText(LoginActivity.this, "取消记住密码：" + isChecked, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "取消记住密码", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "取消记住密码：" + isChecked, Toast.LENGTH_SHORT).show();
                     // 提交
                     editor.commit();
                 }

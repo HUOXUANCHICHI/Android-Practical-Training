@@ -140,7 +140,7 @@ public class AssetsDaoImpl implements AssetsDao {
         // String sql = "select * from tb_assets where assetsName = '" + name + "' and
         // '" + username + "'";
         String sql = "SELECT * FROM tb_assets WHERE assetsType = '" + assets_type_name + "' and username = '" + username + "'";
-        Log.i("该月查询根据id资产sql语句", sql);
+        Log.i("当月查询根据id资产sql语句", sql);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         // 判断cursor.moveToFirst()的值为true或false来确定查询结果是否为空

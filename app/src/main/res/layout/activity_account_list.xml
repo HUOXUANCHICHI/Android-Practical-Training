@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.account.AccountList">
+    tools:context=".ui.account.AccountListActivity">
 
     <include layout="@layout/main_title_bar"/>
 

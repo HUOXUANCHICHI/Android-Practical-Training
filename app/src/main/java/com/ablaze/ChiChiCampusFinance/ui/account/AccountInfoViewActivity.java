@@ -15,7 +15,7 @@ import com.ablaze.ChiChiCampusFinance.R;
 import com.ablaze.ChiChiCampusFinance.dao.impl.AccountDaoImpl;
 import com.ablaze.ChiChiCampusFinance.ui.login.LoginActivity;
 
-public class AccountInfoView extends Activity {
+public class AccountInfoViewActivity extends Activity {
 
     private TextView tv01, acc_money_sum;
     private Activity mContext;
@@ -24,7 +24,7 @@ public class AccountInfoView extends Activity {
     private RelativeLayout rt_acc_add_records, btn_acc;
     Double sum = 0.0;
 
-    public AccountInfoView(Activity context) {
+    public AccountInfoViewActivity(Activity context) {
         mContext = context;
         // 为以后将Layout转换为view时用
         mInflater = LayoutInflater.from(mContext);
@@ -49,14 +49,14 @@ public class AccountInfoView extends Activity {
         mCurrentView.setVisibility(View.VISIBLE);
 
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
-        // 该月收支
+        // 当月收支
         AccountDaoImpl accountDao = new AccountDaoImpl(mContext);
         Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
-        Log.i("该月收支-->收入", String.valueOf(inCome));
+        Log.i("当月收支-->收入", String.valueOf(inCome));
         Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
-        Log.i("该月收支-->支出", String.valueOf(payOut));
+        Log.i("当月收支-->支出", String.valueOf(payOut));
         sum = inCome + payOut;
-        Log.i("该月收支", "=" + inCome + "" + payOut + " 最终=" + sum);
+        Log.i("当月收支", "=" + inCome + "" + payOut + " 最终=" + sum);
         if (readLoginStatus()) {
             acc_money_sum.setText(String.valueOf(sum));
         } else {
@@ -80,7 +80,7 @@ public class AccountInfoView extends Activity {
             public void onClick(View v) {
                 if (readLoginStatus()) {
                     // 跳转到详情界面
-                    Intent intent = new Intent(mContext, AccountList.class);
+                    Intent intent = new Intent(mContext, AccountListActivity.class);
                     mContext.startActivityForResult(intent, 1);
                 } else {
                     Toast.makeText(mContext, "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
@@ -105,14 +105,14 @@ public class AccountInfoView extends Activity {
     public void showView() {
         mCurrentView.setVisibility(View.VISIBLE);
         acc_money_sum = (TextView) mCurrentView.findViewById(R.id.acc_money_sum);
-        // 该月收支
+        // 当月收支
         AccountDaoImpl accountDao = new AccountDaoImpl(mContext);
         Double inCome = accountDao.findAccSumAll("收入", LoginActivity.getLoggingUsername());
-        Log.i("该月收支-->收入", String.valueOf(inCome));
+        Log.i("当月收支-->收入", String.valueOf(inCome));
         Double payOut = accountDao.findAccSumAll("支出", LoginActivity.getLoggingUsername());
-        Log.i("该月收支-->支出", String.valueOf(payOut));
+        Log.i("当月收支-->支出", String.valueOf(payOut));
         sum = inCome + payOut;
-        Log.i("该月收支", "=" + inCome + "-" + payOut + "最终=" + sum);
+        Log.i("当月收支", "=" + inCome + "-" + payOut + "最终=" + sum);
         if (readLoginStatus()) {
             acc_money_sum.setText(String.valueOf(sum));
         } else {

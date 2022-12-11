@@ -36,7 +36,7 @@ public class SplashActivity extends Activity {
             e.printStackTrace();
             tv_version.setText("V");
         }
-        // 利用timer让此界面延迟3秒后跳转，timer有一个线程，这个线程不断执行task
+        // 利用timer让此界面延迟2秒后跳转，timer有一个线程，这个线程不断执行task
         Timer timer = new Timer();// Timer类是JDK中提供的一个定时器功能，使用时会在主线程之外开启一个单独的线程执行指定任务，任务可以执行一次或者多次
         // TimerTask实现runnable接口，TimerTask类表示在一个指定时间内执行的task
         TimerTask task = new TimerTask() {

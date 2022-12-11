@@ -81,18 +81,22 @@ public class WorkStudyDescActivity extends Activity {
 
     private String phone;
 
-    public void call1(View view) {
+    public void contactUs(View view) {
         getEditString();
         phone = tvWorkStudyTelephone;
         if (ContextCompat.checkSelfPermission(this, Manifest.
                 permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            //无权限，申请权限
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
         } else {
+            //有权限
             call();
         }
     }
 
-    //打电话
+    /**
+     * 打电话
+     */
     private void call() {
         try {
             Intent intent = new Intent(Intent.ACTION_CALL);
@@ -118,8 +122,10 @@ public class WorkStudyDescActivity extends Activity {
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //权限被用户同意
                     call();
                 } else {
+                    //权限被用户拒绝
                     Toast.makeText(this, "你禁止了拨打电话的权限", Toast.LENGTH_SHORT).show();
                 }
                 break;

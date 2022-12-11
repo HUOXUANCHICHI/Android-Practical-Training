@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:text="该月收支资产"
+            android:text="当月收支资产"
             android:textColor="@android:color/black"
             android:textSize="20sp"/>
 

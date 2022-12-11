@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * 账户加载信息页
  */
-public class WorkStudyList extends Activity {
+public class WorkStudyListActivity extends Activity {
 
     private TextView tv_main_title, tv_back;
     private RelativeLayout rl_title_bar;
@@ -66,7 +66,7 @@ public class WorkStudyList extends Activity {
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WorkStudyList.this.finish();
+                WorkStudyListActivity.this.finish();
             }
         });
     }
@@ -77,7 +77,7 @@ public class WorkStudyList extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //将信息传递给详情页面
                 WorkStudy workStudyBean = mData.get(position);
-                Intent intent = new Intent(WorkStudyList.this, WorkStudyDescActivity.class);
+                Intent intent = new Intent(WorkStudyListActivity.this, WorkStudyDescActivity.class);
                 intent.putExtra("workStudy", workStudyBean);
                 startActivity(intent);
             }

@@ -112,7 +112,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:onClick="call1"
+            android:onClick="contactUs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

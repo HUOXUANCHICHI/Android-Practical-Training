@@ -175,7 +175,7 @@ public class AssetsDescActivity extends Activity {
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(AssetsDescActivity.this, "资产账户删除成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AssetsDescActivity.this, "账户资产删除成功", Toast.LENGTH_SHORT).show();
                                 // 保存
                                 assetsDao.deleteAssets(id);
                                 AssetsDescActivity.this.finish();

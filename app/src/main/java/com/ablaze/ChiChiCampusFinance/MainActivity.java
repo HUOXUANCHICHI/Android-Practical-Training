@@ -17,19 +17,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ablaze.ChiChiCampusFinance.ui.aboutme.MyInfoView;
-import com.ablaze.ChiChiCampusFinance.ui.account.AccountInfoView;
-import com.ablaze.ChiChiCampusFinance.ui.assets.AssetsInfoView;
-import com.ablaze.ChiChiCampusFinance.ui.budget.BudgetInfoView;
+import com.ablaze.ChiChiCampusFinance.ui.aboutme.MyInfoViewActivity;
+import com.ablaze.ChiChiCampusFinance.ui.account.AccountInfoViewActivity;
+import com.ablaze.ChiChiCampusFinance.ui.assets.AssetsInfoViewActivity;
+import com.ablaze.ChiChiCampusFinance.ui.budget.BudgetInfoViewActivity;
 import com.ablaze.ChiChiCampusFinance.util.MySqliteHelper;
 
 public class MainActivity extends Activity implements OnClickListener {
 
     // 视图
-    private AccountInfoView mAccountInfoView;
-    private AssetsInfoView mAssetsInfoView;
-    private BudgetInfoView mBudgetInfoView;
-    private MyInfoView mMyInfoView;
+    private AccountInfoViewActivity mAccountInfoView;
+    private AssetsInfoViewActivity mAssetsInfoView;
+    private BudgetInfoViewActivity mBudgetInfoView;
+    private MyInfoViewActivity mMyInfoView;
 
     //顶部退出 背景
     private RelativeLayout rl_title_bar;
@@ -162,7 +162,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 iv_account.setImageResource(R.drawable.account_lan);
                 tv_account.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.VISIBLE);
-                tv_main_title.setText("该月账单");
+                tv_main_title.setText("当月账单");
                 break;
             case 2:
                 mBudgetBtn.setSelected(true);
@@ -191,7 +191,7 @@ public class MainActivity extends Activity implements OnClickListener {
             case 0:
                 // 资产界面
                 if (mAssetsInfoView == null) {
-                    mAssetsInfoView = new AssetsInfoView(this);
+                    mAssetsInfoView = new AssetsInfoViewActivity(this);
                     mBodyLayout.addView(mAssetsInfoView.getView());
                 } else {
                     mAssetsInfoView.showView();
@@ -200,7 +200,7 @@ public class MainActivity extends Activity implements OnClickListener {
             case 1:
                 // 账单界面
                 if (mAccountInfoView == null) {
-                    mAccountInfoView = new AccountInfoView(this);
+                    mAccountInfoView = new AccountInfoViewActivity(this);
                     mBodyLayout.addView(mAccountInfoView.getView());
                 } else {
                     mAccountInfoView.showView();
@@ -209,7 +209,7 @@ public class MainActivity extends Activity implements OnClickListener {
             case 2:
                 // 资产界面
                 if (mBudgetInfoView == null) {
-                    mBudgetInfoView = new BudgetInfoView(this);
+                    mBudgetInfoView = new BudgetInfoViewActivity(this);
                     mBodyLayout.addView(mBudgetInfoView.getView());
                 } else {
                     mBudgetInfoView.showView();
@@ -218,7 +218,7 @@ public class MainActivity extends Activity implements OnClickListener {
             case 3:
                 // 我的界面
                 if (mMyInfoView == null) {
-                    mMyInfoView = new MyInfoView(this);
+                    mMyInfoView = new MyInfoViewActivity(this);
                     mBodyLayout.addView(mMyInfoView.getView());
                 } else {
                     mMyInfoView.showView();
@@ -302,6 +302,13 @@ public class MainActivity extends Activity implements OnClickListener {
      */
     protected long exitTime;
 
+
+    /**
+     * 返回事件
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK

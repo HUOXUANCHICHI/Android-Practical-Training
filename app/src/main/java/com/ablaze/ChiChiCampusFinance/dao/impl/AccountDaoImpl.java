@@ -10,7 +10,6 @@ import com.ablaze.ChiChiCampusFinance.entity.Account;
 import com.ablaze.ChiChiCampusFinance.util.MySqliteHelper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AccountDaoImpl implements AccountDao {
@@ -103,17 +102,15 @@ public class AccountDaoImpl implements AccountDao {
         String sql = "select SUM(accountMoney) from tb_account WHERE payType ='" +
                 payType + "' and username = '"
                 + username + "'";
-        Log.i("该月收支sql语句", sql);
+        Log.i("当月收支sql语句", sql);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         while (cursor.moveToNext()) {
             moneySum = cursor.getDouble(0);
         }
-        Log.i("该月收支sql语句", String.valueOf(moneySum));
+        Log.i("当月收支sql语句", String.valueOf(moneySum));
         cursor.close();
         return moneySum;
     }
-
-    private final ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
 }
