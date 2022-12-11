@@ -57,7 +57,7 @@ public class AssetsDescActivity extends Activity {
         Assets AssBean = (Assets) intent.getSerializableExtra("assets");
         // 设置显示控件
         id = AssBean.getId();
-        et_ass_desc_name.setText(AssBean.getAssetsType());
+        et_ass_desc_name.setText(AssBean.getAssetsName());
         //设置单笔账单详情的资产类型(现金、银行卡、支付宝、微信、其他)下拉列表框选中
         System.out.println("AccBean.getAssetsType()=" + AssBean.getAssetsType());
         switch (AssBean.getAssetsType()) {
